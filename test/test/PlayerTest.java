@@ -5,8 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import dungeon.entity.BabyDragon;
 import dungeon.entity.Dragon;
-import dungeon.entity.Monster;
 import dungeon.entity.Player;
 import dungeon.entity.WoodenBow;
 import dungeon.entity.WoodenSword;
@@ -78,7 +78,7 @@ public class PlayerTest {
 	
 	@Test
 	public void testAttack(){
-		Monster dragon = new Dragon();
+		Dragon dragon = new BabyDragon();
 		int lifeDragon = dragon .getLife();
 		player.attack(dragon, player.getWeapon().getDamage());
 		assertTrue(dragon.getLife() < lifeDragon);

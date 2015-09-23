@@ -30,7 +30,7 @@ public class DungeonTest {
 	
 	@Before
 	public void createDungeon(){
-		dungeon = new Dungeon(new Player(10, new WoodenSword()));
+		dungeon = new Dungeon(new Player(1, new WoodenSword()));
 	}
 	
 	@Test
@@ -63,7 +63,7 @@ public class DungeonTest {
 	
 	@Test
 	public void displayIsCorrect(){	
-		assertEquals("You are in a simple room.\nWhat do you want to do ?\n> ",dungeon.getInformations());
+		assertEquals("You are in a simple room.\nPlayer : you have 1 hp.\nWhat do you want to do ?\n> ",dungeon.getInformations());
 	}
 	
 	@Test

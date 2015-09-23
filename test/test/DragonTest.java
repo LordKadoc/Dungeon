@@ -5,15 +5,15 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import dungeon.entity.BabyDragon;
 import dungeon.entity.Dragon;
-import dungeon.entity.Monster;
 
-public class MonsterTest {
-	Monster dragon;
+public class DragonTest {
+	Dragon dragon;
 	
 	@Before
 	public void initMonster(){
-		dragon = new Dragon();
+		dragon = new BabyDragon();
 	}
 	
 	@Test
@@ -23,12 +23,12 @@ public class MonsterTest {
 	
 	@Test
 	public void testGetLife(){
-		assertEquals(10, dragon.getLife());
+		assertEquals(2, dragon.getLife());
 	}
 	
 	@Test
 	public void testGetDegat(){
-		assertEquals(2, dragon.getDegats());
+		assertEquals(1, dragon.getDegats());
 	}
 	
 	@Test
@@ -39,6 +39,6 @@ public class MonsterTest {
 	@Test
 	public void testSetLife(){
 		dragon.takeDamage(1);
-		assertEquals(9, dragon.getLife());
+		assertEquals(1, dragon.getLife());
 	}
 }

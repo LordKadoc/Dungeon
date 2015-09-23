@@ -1,15 +1,26 @@
 package dungeon.entity;
 
-public class Dragon extends Monster {
+public abstract class Dragon extends Entity {
+	private int degats;
+	private String name;
 
-	public Dragon() {
-		super("Dragon", 10, 2);
-		// TODO Auto-generated constructor stub
+	public Dragon(String name, int life, int degats) {		
+		super(life);
+		this.name = name;
+		this.degats = degats;
+	}
+
+	public int getDegats() {
+		return degats;
+	}
+
+	public String getName() {
+		return name;
 	}
 
 	@Override
 	public String getInformations() {
-		return "Madafucking dragon of doom";
+		// TODO Auto-generated method stub
+			return "Madafucking dragon of doom";
 	}
-
 }
