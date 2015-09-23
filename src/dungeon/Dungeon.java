@@ -1,20 +1,28 @@
 package dungeon;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
+import dungeon.command.Command;
+import dungeon.command.CommandManager;
 import dungeon.entity.Player;
 import dungeon.entity.WoodenSword;
 import dungeon.room.Exit;
 import dungeon.room.Room;
 import dungeon.room.SimpleRoom;
-import dungeon.room.Trap;
 
 public class Dungeon {
 	
-	private Room currentRoom;
-	
 	private final Scanner scanner = new Scanner(System.in);
 	
+	private Room currentRoom;
+	
 	private Player player;
+	
+	private CommandManager commandManager;
+	
+	private int level;
 	
 	public Dungeon(Player player){
 		initDungeon();
@@ -23,17 +31,26 @@ public class Dungeon {
 	
 	private void initDungeon() {
 		currentRoom = new SimpleRoom();
+		commandManager = new CommandManager(this);
+		level = 1;
 	}
 
 	public void start(){
 		
-		System.out.println("********** Welcome in Dragon's Dungeon !!! **********");
+		System.out.println("********** Welcome in the Dragon's Cave !!! **********");
 		
-		do{
-			System.out.print(getInformations());
-			interpreteCommand(scanner.nextLine());
-		}while(!gameIsFinished());
-		System.out.println(getFinalPrint());
+		while(level<=5){
+			
+			currentRoom = new SimpleRoom();
+			new DungeonGenerator(5+2*level, this).generateMainPath();
+			System.out.println("You enter level " + level + " of the dungeon !");
+			do{
+				System.out.print(getInformations());
+				interpreteCommand(scanner.nextLine());
+			}while(!gameIsFinished());
+			System.out.println(getFinalPrint());
+			level++;
+		}
 	}
 	
 	public Player getPlayer(){
@@ -63,26 +80,18 @@ public class Dungeon {
 		command.toLowerCase();
 		String[] words = command.split(" ");
 		int size = words.length;
-		if(size >= 2){
-			String action = words[0];
-			String param = command.substring(action.length()+1, command.length());
-			if(action.equals("go")){
-				enterNewRoom(currentRoom.go(param));
-			}else{
-				System.out.println("I don't understand what you mean");
+		if(size >= 1){
+			List<String> list = new ArrayList<String>(Arrays.asList(words));
+			String action = list.get(0);
+			Command c = commandManager.getCommand(action);
+			if(c != null){
+				list.remove(0);
+				c.act(list.toArray(words));
 			}
-		}else{
-			if(command.equals("describe")){
-				System.out.println(currentRoom.getExtendedDescription());
-			}
-			
 		}
 	}
 	
 	public void enterNewRoom(Room room){
-		if(room.equals(currentRoom)){
-			return;
-		}
 		currentRoom = room;
 		currentRoom.onPlayerEnter(player);
 	}
@@ -104,9 +113,7 @@ public class Dungeon {
 	}
 
 	public static void main(String[] args) {
-		Dungeon d = new Dungeon(new Player(10, new WoodenSword()));
-		new DungeonGenerator(4, d).generateMainPath();
-		d.start();
+		new Dungeon(new Player(10,new WoodenSword())).start();
 	}
 
 }

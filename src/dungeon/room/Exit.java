@@ -16,7 +16,7 @@ public class Exit extends Room {
 
 	@Override
 	public void onPlayerEnter(Player player) {
-		System.out.println("You finally escaped the dungeon !");
+		System.out.println("You reached the exit !");
 	}
 
 }
