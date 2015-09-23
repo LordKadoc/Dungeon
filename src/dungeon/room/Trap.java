@@ -2,6 +2,8 @@ package dungeon.room;
 
 public class Trap extends Room {
 	
+	private int damage = 1;
+	
 	@Override
 	public String toString(){
 		return "a trap";

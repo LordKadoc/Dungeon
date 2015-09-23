@@ -5,7 +5,6 @@ import java.util.Map;
 
 public class Player extends Entity {
 	
-	private int life;
 	private Weapon weapon;
 	private Map<String, Object> inventory;
 	
@@ -29,6 +28,11 @@ public class Player extends Entity {
 	
 	public void setWeapon(Weapon weapon){
 		this.weapon = weapon;
+	}
+
+	@Override
+	public String getInformations() {
+		return "Player : you have " + life + " hp.";
 	}
 	
 }

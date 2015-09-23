@@ -26,6 +26,9 @@ public class Dungeon {
 	}
 
 	public void start(){
+		
+		System.out.println("********** Welcome in Dragon's Dungeon !!! **********");
+		
 		do{
 			System.out.print(getInformations());
 			interpreteCommand(scanner.nextLine());
@@ -39,6 +42,7 @@ public class Dungeon {
 	
 	public String getInformations(){
 		return currentRoom.getDefaultDescription()+"\n"
+				+ player.getInformations() + "\n"
 				+ getQuestion() + "\n"
 				+ getPrompt();
 	}
@@ -63,7 +67,7 @@ public class Dungeon {
 			String action = words[0];
 			String param = command.substring(action.length()+1, command.length());
 			if(action.equals("go")){
-				currentRoom = currentRoom.go(param);
+				enterNewRoom(currentRoom.go(param));
 			}else{
 				System.out.println("I don't understand what you mean");
 			}
@@ -71,6 +75,13 @@ public class Dungeon {
 			if(command.equals("describe")){
 				System.out.println(currentRoom.getExtendedDescription());
 			}
+			
+		}
+	}
+	
+	public void enterNewRoom(Room room){
+		if(room.equals(currentRoom)){
+			return;
 		}
 	}
 	
@@ -79,7 +90,7 @@ public class Dungeon {
 	}
 	
 	public boolean gameIsLost(){
-		return currentRoom instanceof Trap;
+		return player.isDead();
 	}
 	
 	public boolean gameIsWon(){

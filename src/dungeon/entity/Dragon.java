@@ -7,4 +7,9 @@ public class Dragon extends Monster {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public String getInformations() {
+		return "Madafucking dragon of doom";
+	}
+
 }
