@@ -6,6 +6,7 @@ import java.util.Map;
 
 import dungeon.direction.Path;
 import dungeon.direction.PathManager;
+import dungeon.entity.Player;
 
 
 public abstract class Room {
@@ -199,5 +200,7 @@ public abstract class Room {
 	public boolean isExit(){
 		return this instanceof Exit;
 	}
+
+	public abstract void onPlayerEnter(Player player);
 
 }

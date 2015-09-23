@@ -83,6 +83,8 @@ public class Dungeon {
 		if(room.equals(currentRoom)){
 			return;
 		}
+		currentRoom = room;
+		currentRoom.onPlayerEnter(player);
 	}
 	
 	public boolean gameIsFinished(){
