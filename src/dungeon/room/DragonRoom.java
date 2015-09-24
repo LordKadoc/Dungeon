@@ -13,7 +13,7 @@ public class DragonRoom extends Room {
 	@Override
 	public void onPlayerEnter(Player player) {
 		// TODO Auto-generated method stub
-		
+		System.out.println("You are in a Dragon room ! The fight begin...");
 	}
 	
 }

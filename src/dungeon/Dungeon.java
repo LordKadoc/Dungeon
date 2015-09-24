@@ -8,6 +8,7 @@ import dungeon.command.Command;
 import dungeon.command.CommandManager;
 import dungeon.entity.Player;
 import dungeon.entity.WoodenSword;
+import dungeon.room.DragonRoom;
 import dungeon.room.Exit;
 import dungeon.room.Room;
 import dungeon.room.SimpleRoom;
@@ -45,8 +46,12 @@ public class Dungeon {
 			new DungeonGenerator(5+2*level, this).generateMainPath();
 			System.out.println("You enter level " + level + " of the dungeon !");
 			do{
-				System.out.print(getInformations());
-				interpreteCommand(scanner.nextLine());
+				if(currentRoom instanceof DragonRoom){
+					//Code a ecrire...
+				} else {
+					System.out.print(getInformations());
+					interpreteCommand(scanner.nextLine());
+				}
 			}while(!gameIsFinished());
 			System.out.println(getFinalPrint());
 			level++;
