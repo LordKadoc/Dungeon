@@ -1,11 +1,20 @@
 package dungeon.command;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import dungeon.Dungeon;
 
 public class CommandManager {
+	
+	public final static String describe = new String("describe");
+	
+	public final static String go = new String("go");
+	
+	public final static String pick = new String("pick");
+	
+	private Map<String,Command> allCommands;
 	
 	private Map<String,Command> availableCommands;
 	
@@ -13,25 +22,34 @@ public class CommandManager {
 	
 	public CommandManager(Dungeon dungeon){
 		this.dungeon = dungeon;
+		this.availableCommands = new HashMap<String,Command>();
 		initDefaultCommands();
 	}
 	
 	private void initDefaultCommands() {
-		availableCommands = new HashMap<String,Command>();
-		availableCommands.put("go", new MoveCommand(dungeon));
-		availableCommands.put("describe", new DescriptionCommand(dungeon));
+		allCommands = new HashMap<String,Command>();
+		allCommands.put(go, new MoveCommand(dungeon));
+		allCommands.put(describe, new DescriptionCommand(dungeon));
+		allCommands.put(pick, new PickCommand(dungeon));
+		//allCommands.put("run",null);
+		//allCommands.put("attack",null);
+		//allCommands.put("equip",null);
+		//allCommands.put("use",null);
 	}
 
 	public Command getCommand(String action){
 		return availableCommands.get(action);
 	}
 	
-	public void addCommand(String action, Command command){
-		availableCommands.put(action, command);
-	}
-	
-	public void removeCommand(String action){
-		availableCommands.remove(action);
+	public void setAvailableCommands(List<String> availableActions){
+		Command command;
+		availableCommands.clear();
+		for(String s : availableActions){
+			command = allCommands.get(s);
+			if(command != null){
+				availableCommands.put(s, command);
+			}
+		}
 	}
 
 }

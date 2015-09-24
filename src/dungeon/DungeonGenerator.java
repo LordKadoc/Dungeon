@@ -10,6 +10,7 @@ import dungeon.room.Exit;
 import dungeon.room.Room;
 import dungeon.room.SimpleRoom;
 import dungeon.room.Trap;
+import dungeon.room.TreasureRoom;
 
 public class DungeonGenerator {
 	
@@ -78,7 +79,7 @@ public class DungeonGenerator {
 		}else if(random > 55){
 			return new Trap();
 		}
-		return null;
+		return new TreasureRoom();
 	}
 	
 	public boolean hasPath(){

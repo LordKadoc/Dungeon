@@ -1,5 +1,9 @@
 package dungeon.room;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import dungeon.command.CommandManager;
 import dungeon.entity.Player;
 
 public class Trap extends Room {
@@ -21,6 +25,13 @@ public class Trap extends Room {
 	public void onPlayerEnter(Player player) {
 		System.out.println("Ouch. You take " + damage + " damage.");
 		player.takeDamage(damage);
+	}
+	
+	@Override
+	public List<String> getAvailableCommands() {
+		List<String> commands = new ArrayList<String>();
+		commands.add(CommandManager.go);
+		return commands;
 	}
 
 }

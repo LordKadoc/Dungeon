@@ -4,12 +4,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import dungeon.IRoom;
 import dungeon.direction.Path;
 import dungeon.direction.PathManager;
-import dungeon.entity.Player;
 
 
-public abstract class Room {
+public abstract class Room implements IRoom{
 	
 	protected Map<Path,Room> visibleRooms;
 	
@@ -200,7 +200,5 @@ public abstract class Room {
 	public boolean isExit(){
 		return this instanceof Exit;
 	}
-
-	public abstract void onPlayerEnter(Player player);
-
+	
 }

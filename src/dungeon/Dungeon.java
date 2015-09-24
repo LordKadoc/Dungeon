@@ -7,8 +7,6 @@ import java.util.Scanner;
 import dungeon.command.Command;
 import dungeon.command.CommandManager;
 import dungeon.entity.Player;
-import dungeon.entity.WoodenSword;
-import dungeon.room.DragonRoom;
 import dungeon.room.Exit;
 import dungeon.room.Room;
 import dungeon.room.SimpleRoom;
@@ -22,40 +20,20 @@ public class Dungeon {
 	private Player player;
 	
 	private CommandManager commandManager;
-	
-	private int level;
-	
+		
 	public Dungeon(Player player){
-		initDungeon();
 		this.player = player;
-	}
-	
-	private void initDungeon() {
-		currentRoom = new SimpleRoom();
-		commandManager = new CommandManager(this);
-		level = 1;
+		this.currentRoom = new SimpleRoom();
+		this.commandManager = new CommandManager(this);
 	}
 
 	public void start(){
-		
-		System.out.println("********** Welcome in the Dragon's Cave !!! **********");
-		
-		while(level<=5){
-			
-			currentRoom = new SimpleRoom();
-			new DungeonGenerator(5+2*level, this).generateMainPath();
-			System.out.println("You enter level " + level + " of the dungeon !");
-			do{
-				if(currentRoom instanceof DragonRoom){
-					//Code a ecrire...
-				} else {
-					System.out.print(getInformations());
-					interpreteCommand(scanner.nextLine());
-				}
-			}while(!gameIsFinished());
-			System.out.println(getFinalPrint());
-			level++;
-		}
+		do{
+			commandManager.setAvailableCommands(currentRoom.getAvailableCommands());
+			System.out.print(getInformations());
+			interpreteCommand(scanner.nextLine());
+		}while(!gameIsFinished());
+		System.out.println(getFinalPrint());
 	}
 	
 	public Player getPlayer(){
@@ -92,6 +70,8 @@ public class Dungeon {
 			if(c != null){
 				list.remove(0);
 				c.act(list.toArray(words));
+			}else{
+				System.out.println("Nothing happens");
 			}
 		}
 	}
@@ -115,10 +95,6 @@ public class Dungeon {
 	
 	public Room getCurrentRoom(){
 		return currentRoom;
-	}
-
-	public static void main(String[] args) {
-		new Dungeon(new Player(10,new WoodenSword())).start();
 	}
 
 }

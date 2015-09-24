@@ -1,5 +1,8 @@
 package dungeon.room;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import dungeon.entity.Player;
 
 public class Exit extends Room {
@@ -17,6 +20,12 @@ public class Exit extends Room {
 	@Override
 	public void onPlayerEnter(Player player) {
 		System.out.println("You reached the exit !");
+	}
+	
+	@Override
+	public List<String> getAvailableCommands() {
+		List<String> commands = new ArrayList<String>();
+		return commands;
 	}
 
 }

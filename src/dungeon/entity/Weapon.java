@@ -16,4 +16,9 @@ public abstract class Weapon {
 	public int getDamage(){
 		return damage;
 	}
+	
+	@Override
+	public String toString(){
+		return name;
+	}
 }
