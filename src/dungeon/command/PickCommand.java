@@ -32,6 +32,7 @@ public class PickCommand extends Command {
 		if(item.equals(weapon.toString())){
 			dungeon.getPlayer().setWeapon(weapon);
 			System.out.println("You picked a " + weapon + " !");
+			room.setLooted(true);
 		}
 		
 	}

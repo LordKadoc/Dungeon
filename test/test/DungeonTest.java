@@ -31,6 +31,7 @@ public class DungeonTest {
 	@Before
 	public void createDungeon(){
 		dungeon = new Dungeon(new Player(1, new WoodenSword()));
+		dungeon.getCommandManager().setAvailableCommands(dungeon.getCurrentRoom().getAvailableCommands());
 	}
 	
 	@Test

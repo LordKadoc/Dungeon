@@ -73,12 +73,12 @@ public class DungeonGenerator {
 	}
 	
 	public Room getRandomRoomType(){
-		int random = (int)(Math.random()*100);
+		/*int random = (int)(Math.random()*100);
 		if(random > 75){
 			return new SimpleRoom();
 		}else if(random > 55){
 			return new Trap();
-		}
+		}*/
 		return new TreasureRoom();
 	}
 	

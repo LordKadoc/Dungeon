@@ -11,7 +11,14 @@ public class MoveCommand extends Command {
 
 	@Override
 	public void act(String... parameters) {
-		Room room = dungeon.getCurrentRoom().go(parameters[0]);
+		
+		StringBuilder builder = new StringBuilder();
+		for(String s : parameters){
+			if(s != null)
+				builder.append(s+" ");
+		}
+		
+		Room room = dungeon.getCurrentRoom().go(builder.toString().trim());
 		if(room != dungeon.getCurrentRoom()){
 			dungeon.enterNewRoom(room);
 		}

@@ -67,6 +67,7 @@ public class Dungeon {
 			List<String> list = new ArrayList<String>(Arrays.asList(words));
 			String action = list.get(0);
 			Command c = commandManager.getCommand(action);
+			System.out.println(c);
 			if(c != null){
 				list.remove(0);
 				c.act(list.toArray(words));
@@ -95,6 +96,10 @@ public class Dungeon {
 	
 	public Room getCurrentRoom(){
 		return currentRoom;
+	}
+	
+	public CommandManager getCommandManager(){
+		return commandManager;
 	}
 
 }

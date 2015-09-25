@@ -48,9 +48,7 @@ public abstract class Room implements IRoom{
 	 * @param room the room to connect to the current room.
 	 */
 	public void addRoom(Path direction, Room room){
-		
-		
-		
+			
 		if(direction.isVisible()){		
 			visibleRooms.put(direction, room);
 		}else{

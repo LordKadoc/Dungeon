@@ -14,7 +14,7 @@ public class Exit extends Room {
 
 	@Override
 	public String getExtendedDescription() {
-		return null;
+		return "You reach a massive wooden door. It seems like you finally reached the end of this dungeon ...";
 	}
 
 	@Override

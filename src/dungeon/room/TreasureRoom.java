@@ -21,7 +21,14 @@ public class TreasureRoom extends Room {
 
 	@Override
 	public String getExtendedDescription() {
-		return null;
+		String s =  "You are in a treasure room. Many explorers already looted it, and it's almost empty now ... There are still a few items on the ground though ...\n";
+		if(looted){
+			s+=" - nothing useful";
+		}else{
+			s+=" - a " + weapon.toString() + " on the ground, just in front of you.";
+		}
+		
+		return s;
 	}
 
 	@Override
