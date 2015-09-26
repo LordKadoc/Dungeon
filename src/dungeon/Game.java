@@ -29,7 +29,12 @@ public class Game {
 			
 			dungeon.start();
 			
-			currentLevel++;
+			if(dungeon.gameIsLost()){
+				System.out.println("You lose !");
+				return;
+			}else{
+				currentLevel++;
+			}
 			
 		}
 		

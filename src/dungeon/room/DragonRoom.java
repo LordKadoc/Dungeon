@@ -19,8 +19,8 @@ public class DragonRoom extends Room {
 
 	@Override
 	public String getExtendedDescription() {
-		// TODO Auto-generated method stub
-		return null;
+		String s = "You are in a small room, with scorch marks all over the walls ... It seems like you entered a dragon's nest !!";
+		return s;
 	}
 
 	@Override
@@ -32,7 +32,13 @@ public class DragonRoom extends Room {
 	@Override
 	public List<String> getAvailableCommands() {
 		List<String> commands = new ArrayList<String>();
-		commands.add(CommandManager.describe);
+		commands.add(CommandManager.help);
+		commands.add(CommandManager.search);
+		if(dragon.isDead()){
+			commands.add(CommandManager.go);
+		}else{
+			commands.add(CommandManager.run);
+		}
 		return commands;
 	}
 	

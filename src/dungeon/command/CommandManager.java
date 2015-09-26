@@ -8,11 +8,15 @@ import dungeon.Dungeon;
 
 public class CommandManager {
 	
-	public final static String describe = new String("describe");
+	public final static String search = new String("search");
 	
 	public final static String go = new String("go");
 	
 	public final static String pick = new String("pick");
+	
+	public final static String run = new String("run");
+	
+	public final static String help = new String("help");
 	
 	private Map<String,Command> allCommands;
 	
@@ -29,15 +33,20 @@ public class CommandManager {
 	private void initDefaultCommands() {
 		allCommands = new HashMap<String,Command>();
 		allCommands.put(go, new MoveCommand(dungeon));
-		allCommands.put(describe, new DescriptionCommand(dungeon));
+		allCommands.put(search, new DescriptionCommand(dungeon));
 		allCommands.put(pick, new PickCommand(dungeon));
-		//allCommands.put("run",null);
+		allCommands.put(run,new RunCommand(dungeon));
+		allCommands.put(help, new HelpCommand(dungeon));
 		//allCommands.put("attack",null);
 		//allCommands.put("equip",null);
 		//allCommands.put("use",null);
 	}
+	
+	public void addCommand(String action, Command command){
+		allCommands.put(action,command);
+	}
 
-	public Command getCommand(String action){
+	public Command getAvailableCommand(String action){
 		return availableCommands.get(action);
 	}
 	

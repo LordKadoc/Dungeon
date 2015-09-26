@@ -37,4 +37,9 @@ public class PickCommand extends Command {
 		
 	}
 
+	@Override
+	public String description() {
+		return "pick <item> : Take the item on the ground.";
+	}
+
 }

@@ -43,7 +43,8 @@ public class TreasureRoom extends Room {
 	@Override
 	public List<String> getAvailableCommands() {
 		List<String> commands = new ArrayList<String>();
-		commands.add(CommandManager.describe);
+		commands.add(CommandManager.help);
+		commands.add(CommandManager.search);
 		commands.add(CommandManager.go);
 		commands.add(CommandManager.pick);
 		return commands;

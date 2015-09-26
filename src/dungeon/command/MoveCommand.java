@@ -24,4 +24,9 @@ public class MoveCommand extends Command {
 		}
 	}
 
+	@Override
+	public String description() {
+		return "go <direction> : Makes you move to an adjacent room, if there is a room in the direction you specified.";
+	}
+
 }

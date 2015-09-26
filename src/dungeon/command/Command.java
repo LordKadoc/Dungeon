@@ -12,4 +12,6 @@ public abstract class Command {
 	
 	public abstract void act(String ...parameters);
 	
+	public abstract String description();
+	
 }

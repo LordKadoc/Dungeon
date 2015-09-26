@@ -66,7 +66,7 @@ public class Dungeon {
 		if(size >= 1){
 			List<String> list = new ArrayList<String>(Arrays.asList(words));
 			String action = list.get(0);
-			Command c = commandManager.getCommand(action);
+			Command c = commandManager.getAvailableCommand(action);
 			if(c != null){
 				list.remove(0);
 				c.act(list.toArray(words));
@@ -77,6 +77,7 @@ public class Dungeon {
 	}
 	
 	public void enterNewRoom(Room room){
+		player.setLastVisitedRoom(currentRoom);
 		currentRoom = room;
 		currentRoom.onPlayerEnter(player);
 	}

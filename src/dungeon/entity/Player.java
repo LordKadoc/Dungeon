@@ -3,7 +3,12 @@ package dungeon.entity;
 import java.util.HashMap;
 import java.util.Map;
 
+import dungeon.room.Room;
+
 public class Player extends Entity {
+	
+	
+	private Room lastVisitedRoom;
 	
 	private Weapon weapon;
 	private Map<String, Object> inventory;
@@ -33,6 +38,14 @@ public class Player extends Entity {
 	@Override
 	public String getInformations() {
 		return "Player : you have " + life + " hp.";
+	}
+	
+	public Room getLastVisitedRoom(){
+		return lastVisitedRoom;
+	}
+	
+	public void setLastVisitedRoom(Room room){
+		this.lastVisitedRoom = room;
 	}
 	
 }

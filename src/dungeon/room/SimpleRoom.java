@@ -16,9 +16,12 @@ public class SimpleRoom extends Room {
 
 	@Override
 	public String getExtendedDescription() {
-		String s = getDefaultDescription();
+		if(hiddenRooms.isEmpty()){
+			return "You are in an empty room. You can see few pieces of furniture around you, but nothing unusual ...";
+		}
+		String s = "";	
 		for(Path p : hiddenRooms.keySet()){
-			s+="\n"+"There is a room " + p + ".";
+			s+="\n"+"You found a room " + p + " !";
 		}
 		return s;
 	}
@@ -32,7 +35,8 @@ public class SimpleRoom extends Room {
 	@Override
 	public List<String> getAvailableCommands() {
 		List<String> commands = new ArrayList<String>();
-		commands.add(CommandManager.describe);
+		commands.add(CommandManager.help);
+		commands.add(CommandManager.search);
 		commands.add(CommandManager.go);
 		return commands;
 	}
