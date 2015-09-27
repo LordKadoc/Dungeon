@@ -62,4 +62,10 @@ public class TreasureRoom extends Room {
 		return looted;
 	}
 
+	@Override
+	public void onTurn(Player player) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

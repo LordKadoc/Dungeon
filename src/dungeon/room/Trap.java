@@ -34,4 +34,10 @@ public class Trap extends Room {
 		return commands;
 	}
 
+	@Override
+	public void onTurn(Player player) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -59,5 +59,14 @@ public class DragonRoom extends Room {
 	public Dragon getDragon(){
 		return dragon;
 	}
+
+	@Override
+	public void onTurn(Player player) {
+		// TODO Auto-generated method stub
+		if(visited == false){
+			System.out.println("The dragon attack you !");
+			dragon.attack(player, dragon.getDegats());
+		}
+	}
 	
 }

@@ -33,6 +33,7 @@ public class Dungeon {
 			commandManager.setAvailableCommands(currentRoom.getAvailableCommands());
 			System.out.print(getInformations());
 			interpreteCommand(scanner.nextLine());
+			currentRoom.onTurn(player);
 		}while(!gameIsFinished());
 		System.out.println(getFinalPrint());
 	}

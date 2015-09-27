@@ -28,4 +28,10 @@ public class Exit extends Room {
 		return commands;
 	}
 
+	@Override
+	public void onTurn(Player player) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

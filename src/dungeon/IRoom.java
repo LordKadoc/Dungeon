@@ -9,5 +9,7 @@ public interface IRoom {
 	public void onPlayerEnter(Player player);	
 	
 	public List<String> getAvailableCommands();
+	
+	public void onTurn(Player player);
 
 }

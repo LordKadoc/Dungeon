@@ -40,5 +40,11 @@ public class SimpleRoom extends Room {
 		commands.add(CommandManager.go);
 		return commands;
 	}
+
+	@Override
+	public void onTurn(Player player) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
