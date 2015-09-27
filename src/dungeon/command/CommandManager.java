@@ -18,6 +18,8 @@ public class CommandManager {
 	
 	public final static String help = new String("help");
 	
+	public final static String attack = new String("attack");
+	
 	private Map<String,Command> allCommands;
 	
 	private Map<String,Command> availableCommands;
@@ -37,7 +39,7 @@ public class CommandManager {
 		allCommands.put(pick, new PickCommand(dungeon));
 		allCommands.put(run,new RunCommand(dungeon));
 		allCommands.put(help, new HelpCommand(dungeon));
-		//allCommands.put("attack",null);
+		allCommands.put("attack", new AttackCommand(dungeon));
 		//allCommands.put("equip",null);
 		//allCommands.put("use",null);
 	}

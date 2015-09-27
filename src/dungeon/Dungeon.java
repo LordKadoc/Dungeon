@@ -7,6 +7,7 @@ import java.util.Scanner;
 import dungeon.command.Command;
 import dungeon.command.CommandManager;
 import dungeon.entity.Player;
+import dungeon.room.DragonRoom;
 import dungeon.room.Exit;
 import dungeon.room.Room;
 import dungeon.room.SimpleRoom;
@@ -41,6 +42,12 @@ public class Dungeon {
 	}
 	
 	public String getInformations(){
+		if(currentRoom instanceof DragonRoom && !((DragonRoom) currentRoom).isVisisted()){
+			return player.getInformations() + "\n"
+					+ ((DragonRoom) currentRoom).getDragon().getInformations() + "\n"
+					+ getQuestion() + "\n"
+					+ getPrompt();
+		}
 		return currentRoom.getDefaultDescription()+"\n"
 				+ player.getInformations() + "\n"
 				+ getQuestion() + "\n"

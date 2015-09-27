@@ -11,6 +11,7 @@ import dungeon.entity.Player;
 public class DragonRoom extends Room {
 	
 	private Dragon dragon;
+	private boolean visited = false;
 	
 	@Override
 	public String toString(){
@@ -25,8 +26,12 @@ public class DragonRoom extends Room {
 
 	@Override
 	public void onPlayerEnter(Player player) {
-		dragon = new BabyDragon();
-		System.out.println("You are in a Dragon room ! The fight begins...");
+		if(visited == false){
+			dragon = new BabyDragon(this);
+			System.out.println("You are in a dragon room. The fight begins...");
+		} else {
+			System.out.println("You have already kill the dragon");
+		}
 	}
 	
 	@Override
@@ -34,12 +39,21 @@ public class DragonRoom extends Room {
 		List<String> commands = new ArrayList<String>();
 		commands.add(CommandManager.help);
 		commands.add(CommandManager.search);
+		commands.add(CommandManager.attack);
 		if(dragon.isDead()){
 			commands.add(CommandManager.go);
 		}else{
 			commands.add(CommandManager.run);
 		}
 		return commands;
+	}
+	
+	public void setVisited(boolean visited){
+		this.visited = visited;
+	}
+	
+	public boolean isVisisted(){
+		return visited;
 	}
 	
 	public Dragon getDragon(){

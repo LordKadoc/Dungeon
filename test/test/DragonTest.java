@@ -7,13 +7,14 @@ import org.junit.Test;
 
 import dungeon.entity.BabyDragon;
 import dungeon.entity.Dragon;
+import dungeon.room.DragonRoom;
 
 public class DragonTest {
 	Dragon dragon;
 	
 	@Before
 	public void initMonster(){
-		dragon = new BabyDragon();
+		dragon = new BabyDragon(new DragonRoom());
 	}
 	
 	@Test

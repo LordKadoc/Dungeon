@@ -10,6 +10,7 @@ import dungeon.entity.Dragon;
 import dungeon.entity.Player;
 import dungeon.entity.WoodenBow;
 import dungeon.entity.WoodenSword;
+import dungeon.room.DragonRoom;
 
 public class PlayerTest {
 	Player player;
@@ -78,7 +79,7 @@ public class PlayerTest {
 	
 	@Test
 	public void testAttack(){
-		Dragon dragon = new BabyDragon();
+		Dragon dragon = new BabyDragon(new DragonRoom());
 		int lifeDragon = dragon .getLife();
 		player.attack(dragon, player.getWeapon().getDamage());
 		assertTrue(dragon.getLife() < lifeDragon);
