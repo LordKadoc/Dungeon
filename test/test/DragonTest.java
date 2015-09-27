@@ -7,14 +7,13 @@ import org.junit.Test;
 
 import dungeon.entity.BabyDragon;
 import dungeon.entity.Dragon;
-import dungeon.room.DragonRoom;
 
 public class DragonTest {
 	Dragon dragon;
 	
 	@Before
 	public void initMonster(){
-		dragon = new BabyDragon(new DragonRoom());
+		dragon = new BabyDragon();
 	}
 	
 	@Test
@@ -41,5 +40,10 @@ public class DragonTest {
 	public void testSetLife(){
 		dragon.takeDamage(1);
 		assertEquals(1, dragon.getLife());
+	}
+	
+	@Test
+	public void testGetInformations(){
+		assertEquals("Dragon have 2 hp.", dragon.getInformations());
 	}
 }

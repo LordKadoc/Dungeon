@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import dungeon.direction.Path;
 import dungeon.direction.PathManager;
+import dungeon.room.DragonRoom;
 import dungeon.room.Exit;
 import dungeon.room.Room;
 import dungeon.room.SimpleRoom;
@@ -93,6 +94,14 @@ public class RoomTest {
 		assertEquals("a trap", room.toString());
 		room = new TreasureRoom();
 		assertEquals("a treasure room", room.toString());
+		room = new DragonRoom();
+		assertEquals("a dragon room", room.toString());
+	}
+	
+	@Test
+	public void extendedDescriptionCorrect(){
+		room = new DragonRoom();
+		assertEquals("You are in a small room, with scorch marks all over the walls ... It seems like you entered a dragon's nest !!", room.getExtendedDescription());
 	}
 
 }

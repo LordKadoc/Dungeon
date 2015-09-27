@@ -43,7 +43,7 @@ public class Dungeon {
 	}
 	
 	public String getInformations(){
-		if(currentRoom instanceof DragonRoom && !((DragonRoom) currentRoom).isVisisted()){
+		if(currentRoom instanceof DragonRoom && !((DragonRoom) currentRoom).isVisited()){
 			return player.getInformations() + "\n"
 					+ ((DragonRoom) currentRoom).getDragon().getInformations() + "\n"
 					+ getQuestion() + "\n"

@@ -28,7 +28,7 @@ public class DragonRoom extends Room {
 	@Override
 	public void onPlayerEnter(Player player) {
 		if(visited == false){
-			dragon = new BabyDragon(this);
+			dragon = new BabyDragon();
 			System.out.println("You are in a dragon room. The fight begins...");
 			premierTour = true;
 		} else {
@@ -54,7 +54,7 @@ public class DragonRoom extends Room {
 		this.visited = visited;
 	}
 	
-	public boolean isVisisted(){
+	public boolean isVisited(){
 		return visited;
 	}
 	
