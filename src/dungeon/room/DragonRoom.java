@@ -12,6 +12,7 @@ public class DragonRoom extends Room {
 	
 	private Dragon dragon;
 	private boolean visited = false;
+	private boolean premierTour;
 	
 	@Override
 	public String toString(){
@@ -29,6 +30,7 @@ public class DragonRoom extends Room {
 		if(visited == false){
 			dragon = new BabyDragon(this);
 			System.out.println("You are in a dragon room. The fight begins...");
+			premierTour = true;
 		} else {
 			System.out.println("You have already kill the dragon");
 		}
@@ -64,8 +66,12 @@ public class DragonRoom extends Room {
 	public void onTurn(Player player) {
 		// TODO Auto-generated method stub
 		if(visited == false){
-			System.out.println("The dragon attack you !");
-			dragon.attack(player, dragon.getDegats());
+			if(premierTour == false){
+				System.out.println("The dragon attack you !");
+				dragon.attack(player, dragon.getDegats());
+			} else {
+				premierTour = false;
+			}
 		}
 	}
 	
