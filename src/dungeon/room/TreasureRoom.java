@@ -58,14 +58,29 @@ public class TreasureRoom extends Room {
 		return commands;
 	}
 	
+	/**
+	 * Returns the item the player can pick up in this room.
+	 * The item can be a potion or a weapon.
+	 * 
+	 * @return a treasure item.
+	 */
 	public Item getItem(){
 		return item;
 	}
 	
+	/**
+	 * Sets the new state of the treasure room : looted or not.
+	 * 
+	 * @param looted true if the treasure in the room has already been salvaged, false otherwise. 
+	 */
 	public void setLooted(boolean looted){
 		this.looted = looted;
 	}
 	
+	/**
+	 * 
+	 * @return true if the room has been looted, false otherwise.
+	 */
 	public boolean isLooted(){
 		return looted;
 	}

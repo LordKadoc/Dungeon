@@ -6,33 +6,28 @@ import dungeon.room.TreasureRoom;
 
 public class PickCommand extends Command {
 
+	/**
+	 * PickCommand resolves the actions happening when the user types the "pick" command.
+	 * 
+	 * @param dungeon the current dungeon level.
+	 */
 	public PickCommand(Dungeon dungeon) {
 		super(dungeon);
 	}
 
 	@Override
-	public void act(String... parameters) {
+	public void act(String params) {
 		
 		
-		String item="";
 		TreasureRoom room = (TreasureRoom) dungeon.getCurrentRoom();
-		Item i = room.getItem();
+		Item item = room.getItem();
 		
-		if(parameters.length < 2){
-			System.out.println("Nothing happens");
-			return;
-		}
+		System.out.println(params);
 		
-		for(String s : parameters){
-			if(s != null){
-				item+=s+" ";
-			}
-		}
-		item = item.substring(0,item.length()-1);
 		
-		if(item.equals(i.toString())){
-			dungeon.getPlayer().addItem(i);
-			System.out.println("You picked a " + i.toString() + " !");
+		if(params.equals(item.toString())){
+			dungeon.getPlayer().addItem(item);
+			System.out.println("You picked a " + item.toString() + " !");
 			room.setLooted(true);
 		}
 		

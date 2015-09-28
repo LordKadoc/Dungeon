@@ -5,20 +5,18 @@ import dungeon.room.Room;
 
 public class MoveCommand extends Command {
 
+	/**
+	 * MoveCommand resolves the actions happening when the user types the "go" command.
+	 * 
+	 * @param dungeon the current dungeon level.
+	 */
 	public MoveCommand(Dungeon dungeon) {
 		super(dungeon);
 	}
 
 	@Override
-	public void act(String... parameters) {
-		
-		StringBuilder builder = new StringBuilder();
-		for(String s : parameters){
-			if(s != null)
-				builder.append(s+" ");
-		}
-		
-		Room room = dungeon.getCurrentRoom().go(builder.toString().trim());
+	public void act(String params) {
+		Room room = dungeon.getCurrentRoom().go(params);
 		if(room != dungeon.getCurrentRoom()){
 			dungeon.enterNewRoom(room);
 		}

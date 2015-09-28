@@ -6,30 +6,20 @@ import dungeon.item.Item;
 
 public class UseCommand extends Command {
 
+	/**
+	 * UseCommand resolves the actions happening when the user types the "use" command.
+	 * 
+	 * @param dungeon the current dungeon level.
+	 */
 	public UseCommand(Dungeon dungeon) {
 		super(dungeon);
 	}
 
 	@Override
-	public void act(String... parameters) {
+	public void act(String params) {
 		Player player = dungeon.getPlayer();
 		
-		String item = "";
-		
-		if(parameters.length < 2){
-			System.out.println("Nothing happens");
-			return;
-		}
-		
-		for(String s : parameters){
-			if(s != null){
-				item+=s+" ";
-			}
-		}
-		
-		item = item.substring(0,item.length()-1);
-		
-		Item i = player.getItem(item);
+		Item i = player.getItem(params);
 		if(i != null){
 			i.use(player);
 		}

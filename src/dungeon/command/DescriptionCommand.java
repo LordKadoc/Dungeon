@@ -4,12 +4,17 @@ import dungeon.Dungeon;
 
 public class DescriptionCommand extends Command {
 
+	/**
+	 * DescriptionCommand resolves the actions happening when the user types the "describe" command.
+	 * 
+	 * @param dungeon the current dungeon level.
+	 */
 	public DescriptionCommand(Dungeon dungeon) {
 		super(dungeon);
 	}
 
 	@Override
-	public void act(String... parameters) {
+	public void act(String params) {
 		System.out.println("===== You are searching the room ... =====" + "\n"
 						 + dungeon.getCurrentRoom().getExtendedDescription() + "\n"
 						 + "==========================================");

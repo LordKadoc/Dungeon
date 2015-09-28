@@ -6,6 +6,9 @@ public class Potion extends Item{
 	
 	private int heal = 2;
 
+	/**
+	 * Creates a new health potion, restoring 2 hit points.
+	 */
 	public Potion() {
 		super("small health potion");
 	}

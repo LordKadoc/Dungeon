@@ -24,6 +24,10 @@ public class DungeonGenerator {
 		this.dungeon = dungeon;
 	}
 	
+	/**
+	 * Generates the main path of the dungeon, a succession of rooms connected one by one.
+	 * The main path is always visible and only goes to the 4 cardinal points north, south, west and east.
+	 */
 	public void generateMainPath(){
 		
 		//System.out.println("Generate Main Path ...");
@@ -51,6 +55,10 @@ public class DungeonGenerator {
 		
 	}
 	
+	/**
+	 *  Generates secondary rooms outside of the main path, some of them being hidden.
+	 *  The secondary rooms are connected to the main path and may contain treasures, monsters or traps.
+	 */
 	public void generateSecondaryPath(){
 		
 		//System.out.println("Generate Second Path ...");
@@ -73,6 +81,15 @@ public class DungeonGenerator {
 		}
 	}
 	
+	/**
+	 * Returns an instance of a room chosen from a list of different types.
+	 * 
+	 * @return a random type of room, from the following :
+	 * 	- simple room
+	 * 	- trap room
+	 * 	- dragon room
+	 * 	- treasure room
+	 */
 	public Room getRandomRoomType(){
 		int random = (int)(Math.random()*100);
 		if(random > 75){
@@ -85,10 +102,18 @@ public class DungeonGenerator {
 		return new TreasureRoom();
 	}
 	
+	/**
+	 * 
+	 * @return true if the dungeon has a path from the entrance to the exit.
+	 */
 	public boolean hasPath(){
 		return !getPath().isEmpty();
 	}
 	
+	/**
+	 * 
+	 * @return a pile of rooms, going from the exit of the dungeon to the entrance.
+	 */
 	public Stack<Room> getPath(){
 		Stack<Room> stackRoom = new Stack<>();
 		List<Room> listRoom = new ArrayList<>();
@@ -117,6 +142,10 @@ public class DungeonGenerator {
 	
 	// ******** GETTERS AND SETTERS *******
 	
+	/**
+	 * 
+	 * @return the dungeon
+	 */
 	public Dungeon getDungeon(){
 		return dungeon;
 	}

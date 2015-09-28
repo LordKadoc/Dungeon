@@ -28,12 +28,20 @@ public class CommandManager {
 	
 	private Dungeon dungeon;
 	
+	/**
+	 * Creates a new command manager, which determines all the possible commands, and those currently available to the user.
+	 * 
+	 * @param dungeon the dungeon in which all the commands are being used.
+	 */
 	public CommandManager(Dungeon dungeon){
 		this.dungeon = dungeon;
 		this.availableCommands = new HashMap<String,Command>();
 		initDefaultCommands();
 	}
 	
+	/**
+	 * Initialize a list of all the commands the player can use in the game.
+	 */
 	private void initDefaultCommands() {
 		allCommands = new HashMap<String,Command>();
 		allCommands.put(go, new MoveCommand(dungeon));
@@ -41,19 +49,27 @@ public class CommandManager {
 		allCommands.put(pick, new PickCommand(dungeon));
 		allCommands.put(run,new RunCommand(dungeon));
 		allCommands.put(help, new HelpCommand(dungeon));
-		allCommands.put("attack", new AttackCommand(dungeon));
+		allCommands.put(attack, new AttackCommand(dungeon));
 		//allCommands.put("equip",null);
 		allCommands.put(use,new UseCommand(dungeon));
 	}
 	
-	public void addCommand(String action, Command command){
-		allCommands.put(action,command);
-	}
-
+	/**
+	 * Returns a command from the list of currently available commands.
+	 * 
+	 * @param action the name of the command
+	 * 
+	 * @return the command if it can be found in the list of currently available commands, null otherwise.
+	 */
 	public Command getAvailableCommand(String action){
 		return availableCommands.get(action);
 	}
 	
+	/**
+	 * Picks from the list of possible commands all the commands matching the name of the list and adds them to the currently available commands.
+	 * 
+	 * @param availableActions the names of the commands to search in the global command list.
+	 */
 	public void setAvailableCommands(List<String> availableActions){
 		Command command;
 		availableCommands.clear();

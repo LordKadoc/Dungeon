@@ -6,11 +6,22 @@ public class Weapon extends Item{
 	
 	protected int damage;
 	
+	/**
+	 * Forges a new weapon, and assigns it a name and an amount of damage.
+	 * 
+	 * @param name the name/type of the weapon.
+	 * 
+	 * @param damage the amount of damage the weapons deals.
+	 */
 	public Weapon(String name, int damage){
 		super(name);
 		this.damage = damage;
 	}
 	
+	/**
+	 * 
+	 * @return the damage of the weapon, how many hit points it makes an enemy lose.
+	 */
 	public int getDamage(){
 		return damage;
 	}

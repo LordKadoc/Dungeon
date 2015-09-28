@@ -51,14 +51,28 @@ public class DragonRoom extends Room {
 		return commands;
 	}
 	
+	/**
+	 * Determines the state of the room, based on whether or not the player already visited it.
+	 * 
+	 * @param visited true if the player already visited the room, false otherwise.
+	 */
 	public void setVisited(boolean visited){
 		this.visited = visited;
 	}
 	
+	/**
+	 * 
+	 * @return whether or not the room has already been visited by the player.
+	 */
 	public boolean isVisited(){
 		return visited;
 	}
 	
+	/**
+	 * Returns the dragon living in this room.
+	 * 
+	 * @return a dragon, which can be alive or dead.
+	 */
 	public Dragon getDragon(){
 		return dragon;
 	}

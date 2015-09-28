@@ -32,6 +32,7 @@ public class Trap extends Room {
 		List<String> commands = new ArrayList<String>();
 		commands.add(CommandManager.go);
 		commands.add(CommandManager.use);
+		commands.add(CommandManager.help);
 		return commands;
 	}
 

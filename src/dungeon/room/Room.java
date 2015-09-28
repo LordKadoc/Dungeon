@@ -17,6 +17,9 @@ public abstract class Room implements IRoom{
 	
 	protected Path directionOfParent;
 		
+	/**
+	 * Creates a new empty room.
+	 */
 	public Room(){
 		visibleRooms = new HashMap<Path,Room>();
 		hiddenRooms = new HashMap<Path,Room>();
@@ -128,6 +131,11 @@ public abstract class Room implements IRoom{
 		return allRoom;
 	}
 	
+	/**
+	 * Returns a list of all the visible rooms you can access from this room.
+	 * 
+	 * @return all the visible adjacent rooms.
+	 */
 	public List<Room> getAllVisibleRooms(){
 		List<Room> allRoom = new ArrayList<>();
 		for(Room r : visibleRooms.values()){
@@ -136,6 +144,11 @@ public abstract class Room implements IRoom{
 		return allRoom;
 	}
 	
+	/**
+	 * Returns a list of all the hidden rooms you can access from this room.
+	 * 
+	 * @return all the hidden adjacent rooms.
+	 */
 	public List<Room> getAllHiddenRooms(){
 		List<Room> allRoom = new ArrayList<>();
 		for(Room r : hiddenRooms.values()){
@@ -156,6 +169,11 @@ public abstract class Room implements IRoom{
 		return rooms;
 	}
 	
+	/**
+	 * Returns the path direction to all the rooms connected to this room, whether or not they are visible.
+	 * 
+	 * @return the path direction of all the adjacent rooms.
+	 */
 	public List<Path> getAllRoomDirections(){
 		List<Path> paths = new ArrayList<Path>();
 		for(Path p : visibleRooms.keySet()){
