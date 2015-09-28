@@ -1,6 +1,7 @@
 package test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
@@ -99,9 +100,41 @@ public class RoomTest {
 	}
 	
 	@Test
-	public void extendedDescriptionCorrect(){
+	public void roomInformationIsCorrect(){
+		assertEquals("You are in a simple room.", room.getDefaultDescription());
+		room = new Trap();
+		assertEquals("You are in a trap.", room.getDefaultDescription());
+		room = new Exit();
+		assertEquals("You are in an exit.", room.getDefaultDescription());
+		room = new TreasureRoom();
+		assertEquals("You are in a treasure room.", room.getDefaultDescription());
+	}
+	
+	@Test
+	public void testExitExtendedDescriptionCorrect(){
+		room = new Exit();
+		assertEquals("You reach a massive wooden door. It seems like you finally reached the end of this dungeon ...", room.getExtendedDescription());
+	}
+	
+	@Test
+	public void testTrapExtendedDescriptionCorrect(){
+		room = new Trap();
+		assertEquals(null, room.getExtendedDescription());
+	}
+	
+	@Test
+	public void testDragonRoomExtendedDescriptionCorrect(){
 		room = new DragonRoom();
 		assertEquals("You are in a small room, with scorch marks all over the walls ... It seems like you entered a dragon's nest !!", room.getExtendedDescription());
 	}
-
+	
+	@Test
+	public void testDragonRoomVisited(){
+		room = new DragonRoom();
+		assertFalse(((DragonRoom) room).isVisited());
+		((DragonRoom) room).setVisited(true);
+		assertTrue(((DragonRoom) room).isVisited());
+	}
+	
+	
 }
