@@ -1,4 +1,4 @@
-package dungeon.entity;
+package dungeon.item;
 
 public class WoodenSword extends Weapon {
 

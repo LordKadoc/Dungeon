@@ -9,7 +9,7 @@ import dungeon.Dungeon;
 import dungeon.DungeonGenerator;
 import dungeon.direction.PathManager;
 import dungeon.entity.Player;
-import dungeon.entity.WoodenSword;
+import dungeon.item.WoodenSword;
 import dungeon.room.SimpleRoom;
 
 public class DungeonGeneratorTest {

@@ -21,6 +21,6 @@ public abstract class Dragon extends Entity {
 	@Override
 	public String getInformations() {
 		// TODO Auto-generated method stub
-		return "Dragon have " + life + " hp.";
+		return "Dragon has " + life + " hp.";
 	}
 }

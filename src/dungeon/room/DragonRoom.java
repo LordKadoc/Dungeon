@@ -42,6 +42,7 @@ public class DragonRoom extends Room {
 		commands.add(CommandManager.help);
 		commands.add(CommandManager.search);
 		commands.add(CommandManager.attack);
+		commands.add(CommandManager.use);
 		if(dragon.isDead()){
 			commands.add(CommandManager.go);
 		}else{
@@ -67,7 +68,7 @@ public class DragonRoom extends Room {
 		// TODO Auto-generated method stub
 		if(visited == false){
 			if(premierTour == false){
-				System.out.println("The dragon attack you !");
+				System.out.println("The dragon attacks you !");
 				dragon.attack(player, dragon.getDegats());
 			} else {
 				premierTour = false;

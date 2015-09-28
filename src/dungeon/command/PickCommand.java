@@ -1,7 +1,7 @@
 package dungeon.command;
 
 import dungeon.Dungeon;
-import dungeon.entity.Weapon;
+import dungeon.item.Item;
 import dungeon.room.TreasureRoom;
 
 public class PickCommand extends Command {
@@ -16,9 +16,10 @@ public class PickCommand extends Command {
 		
 		String item="";
 		TreasureRoom room = (TreasureRoom) dungeon.getCurrentRoom();
-		Weapon weapon = room.getWeapon();
+		Item i = room.getItem();
 		
-		if(weapon == null){
+		if(parameters.length < 2){
+			System.out.println("Nothing happens");
 			return;
 		}
 		
@@ -29,9 +30,9 @@ public class PickCommand extends Command {
 		}
 		item = item.substring(0,item.length()-1);
 		
-		if(item.equals(weapon.toString())){
-			dungeon.getPlayer().setWeapon(weapon);
-			System.out.println("You picked a " + weapon + " !");
+		if(item.equals(i.toString())){
+			dungeon.getPlayer().addItem(i);
+			System.out.println("You picked a " + i.toString() + " !");
 			room.setLooted(true);
 		}
 		

@@ -1,7 +1,7 @@
 package dungeon;
 
 import dungeon.entity.Player;
-import dungeon.entity.WoodenSword;
+import dungeon.item.WoodenSword;
 
 public class Game {
 	
@@ -46,7 +46,7 @@ public class Game {
 	}
 
 	public static void main(String[] args){
-		new Game(5).playGame();
+		new Game(3).playGame();
 	}
 	
 }

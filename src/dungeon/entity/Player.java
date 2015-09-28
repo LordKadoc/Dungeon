@@ -1,8 +1,10 @@
 package dungeon.entity;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
 
+import dungeon.item.Item;
+import dungeon.item.Weapon;
 import dungeon.room.Room;
 
 public class Player extends Entity {
@@ -11,20 +13,33 @@ public class Player extends Entity {
 	private Room lastVisitedRoom;
 	
 	private Weapon weapon;
-	private Map<String, Object> inventory;
+	private List<Item> inventory;
 	
 	public Player(int life, Weapon weapon){
 		super(life);
 		this.weapon = weapon;
-		this.inventory = new HashMap<>();
+		this.inventory = new ArrayList<>();
 	}
 	
-	public void setInventory(String s, Object o){
-		inventory.put(s, o);
+	public void addItem(Item i){
+		inventory.add(i);
 	}
 	
-	public Object getInInventory(String s){
-		return inventory.get(s);
+	public void removeItem(Item i){
+		inventory.remove(i);
+	}
+	
+	public Item getItem(int index){
+		return inventory.get(index);
+	}
+	
+	public Item getItem(String name){
+		for(Item i : inventory){
+			if(i.getName().equals(name)){
+				return i;
+			}
+		}
+		return null;
 	}
 	
 	public Weapon getWeapon(){

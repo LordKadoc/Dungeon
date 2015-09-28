@@ -16,7 +16,7 @@ import dungeon.Dungeon;
 import dungeon.direction.Path;
 import dungeon.direction.PathManager;
 import dungeon.entity.Player;
-import dungeon.entity.WoodenSword;
+import dungeon.item.WoodenSword;
 import dungeon.room.Exit;
 import dungeon.room.Room;
 import dungeon.room.SimpleRoom;

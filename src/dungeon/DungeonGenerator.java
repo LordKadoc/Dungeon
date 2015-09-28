@@ -10,6 +10,8 @@ import dungeon.room.DragonRoom;
 import dungeon.room.Exit;
 import dungeon.room.Room;
 import dungeon.room.SimpleRoom;
+import dungeon.room.Trap;
+import dungeon.room.TreasureRoom;
 
 public class DungeonGenerator {
 	
@@ -72,13 +74,15 @@ public class DungeonGenerator {
 	}
 	
 	public Room getRandomRoomType(){
-		/*int random = (int)(Math.random()*100);
+		int random = (int)(Math.random()*100);
 		if(random > 75){
 			return new SimpleRoom();
 		}else if(random > 55){
 			return new Trap();
-		}*/
-		return new DragonRoom();
+		}else if(random > 25){
+			return new DragonRoom();
+		}
+		return new TreasureRoom();
 	}
 	
 	public boolean hasPath(){

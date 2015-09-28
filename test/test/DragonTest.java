@@ -44,6 +44,6 @@ public class DragonTest {
 	
 	@Test
 	public void testGetInformations(){
-		assertEquals("Dragon have 2 hp.", dragon.getInformations());
+		assertEquals("Dragon has 2 hp.", dragon.getInformations());
 	}
 }

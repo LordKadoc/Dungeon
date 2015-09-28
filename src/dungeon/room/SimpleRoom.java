@@ -38,6 +38,7 @@ public class SimpleRoom extends Room {
 		commands.add(CommandManager.help);
 		commands.add(CommandManager.search);
 		commands.add(CommandManager.go);
+		commands.add(CommandManager.use);
 		return commands;
 	}
 

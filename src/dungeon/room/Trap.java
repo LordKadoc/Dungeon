@@ -31,6 +31,7 @@ public class Trap extends Room {
 	public List<String> getAvailableCommands() {
 		List<String> commands = new ArrayList<String>();
 		commands.add(CommandManager.go);
+		commands.add(CommandManager.use);
 		return commands;
 	}
 

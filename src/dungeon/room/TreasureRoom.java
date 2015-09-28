@@ -5,12 +5,13 @@ import java.util.List;
 
 import dungeon.command.CommandManager;
 import dungeon.entity.Player;
-import dungeon.entity.Weapon;
-import dungeon.entity.WoodenBow;
+import dungeon.item.Item;
+import dungeon.item.Potion;
+import dungeon.item.WoodenBow;
 
 public class TreasureRoom extends Room {
 	
-	private Weapon weapon;
+	private Item item;
 	
 	private boolean looted = false;
 	
@@ -25,7 +26,7 @@ public class TreasureRoom extends Room {
 		if(looted){
 			s+=" - nothing useful";
 		}else{
-			s+=" - a " + weapon.toString() + " on the ground, just in front of you.";
+			s+=" - a " + item.toString() + " on the ground, just in front of you.";
 		}
 		
 		return s;
@@ -33,11 +34,15 @@ public class TreasureRoom extends Room {
 
 	@Override
 	public void onPlayerEnter(Player player) {
-		if(weapon == null && !looted){
-			weapon = new WoodenBow();
-		}
 		System.out.println("You enter a treasure room !");
-		System.out.println("You see a " + weapon + " in front of you.");
+		if(item == null && !looted){
+			if((int)(Math.random()*100) > 50){
+				item = new WoodenBow();
+			}else{
+				item = new Potion();
+			}
+			System.out.println("You see a " + item.toString() + " in front of you.");
+		}
 	}
 
 	@Override
@@ -46,12 +51,15 @@ public class TreasureRoom extends Room {
 		commands.add(CommandManager.help);
 		commands.add(CommandManager.search);
 		commands.add(CommandManager.go);
-		commands.add(CommandManager.pick);
+		commands.add(CommandManager.use);
+		if(!looted){
+			commands.add(CommandManager.pick);	
+		}
 		return commands;
 	}
 	
-	public Weapon getWeapon(){
-		return weapon;
+	public Item getItem(){
+		return item;
 	}
 	
 	public void setLooted(boolean looted){

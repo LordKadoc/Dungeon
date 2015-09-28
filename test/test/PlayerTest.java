@@ -8,8 +8,8 @@ import org.junit.Test;
 import dungeon.entity.BabyDragon;
 import dungeon.entity.Dragon;
 import dungeon.entity.Player;
-import dungeon.entity.WoodenBow;
-import dungeon.entity.WoodenSword;
+import dungeon.item.WoodenBow;
+import dungeon.item.WoodenSword;
 
 public class PlayerTest {
 	Player player;
@@ -43,8 +43,9 @@ public class PlayerTest {
 	
 	@Test
 	public void putObjectInInventory(){
-		player.setInventory("Arme", new WoodenSword());
-		assertTrue(player.getInInventory("Arme") instanceof WoodenSword);
+		WoodenSword sword = new WoodenSword();
+		player.addItem(sword);
+		assertTrue(player.getItem(0) instanceof WoodenSword);
 	}
 	
 	@Test
