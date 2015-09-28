@@ -19,6 +19,13 @@ public class DungeonGenerator {
 	
 	private Dungeon dungeon;
 	
+	/**
+	 * Creates a new generator for the dungeon.
+	 * 
+	 * @param nbRoomsBeginToEnd the number of room between the beginning and the end of the dungeon.
+	 *
+	 * @param dungeon the dungeon to generate.
+	 */
 	public DungeonGenerator(int nbRoomsBeginToEnd, Dungeon dungeon){
 		this.nbRoomsBeginToEnd = nbRoomsBeginToEnd;
 		this.dungeon = dungeon;
