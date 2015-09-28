@@ -51,18 +51,6 @@ public class DungeonTest {
 	}
 	
 	@Test
-	public void roomInformationIsCorrect(){
-		Room room = dungeon.getCurrentRoom();
-		assertEquals("You are in a simple room.", room.getDefaultDescription());
-		room = new Trap();
-		assertEquals("You are in a trap.", room.getDefaultDescription());
-		room = new Exit();
-		assertEquals("You are in an exit.", room.getDefaultDescription());
-		room = new TreasureRoom();
-		assertEquals("You are in a treasure room.", room.getDefaultDescription());
-	}
-	
-	@Test
 	public void displayIsCorrect(){	
 		assertEquals("You are in a simple room.\nPlayer : you have 1 hp.\nWhat do you want to do ?\n> ",dungeon.getInformations());
 	}
