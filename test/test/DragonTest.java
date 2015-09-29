@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import dungeon.entity.BabyDragon;
 import dungeon.entity.Dragon;
 
 public class DragonTest {
@@ -13,11 +12,11 @@ public class DragonTest {
 	
 	@Before
 	public void initMonster(){
-		dragon = new BabyDragon();
+		dragon = new Dragon("Baby Dragon", 2, 1);
 	}
 	
 	@Test
-	public void MonsterIsDragon(){
+	public void testMonsterIsDragon(){
 		assertTrue(dragon instanceof Dragon);
 	}
 	
@@ -33,7 +32,7 @@ public class DragonTest {
 	
 	@Test
 	public void testGetName(){
-		assertEquals("Dragon", dragon.getName());
+		assertEquals("Baby Dragon", dragon.getName());
 	}
 
 	@Test

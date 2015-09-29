@@ -25,23 +25,23 @@ public class DungeonGeneratorTest {
 	}
 	
 	@Test
-	public void dungeonGeneratorIsCreated(){
+	public void testDungeonGeneratorIsCreated(){
 		assertNotNull(dungeonGenerator);
 		assertTrue(dungeonGenerator instanceof DungeonGenerator);
 	}
 	
 	@Test
-	public void dungeonHasRigthNumberOfRoom(){
+	public void testDungeonHasRigthNumberOfRoom(){
 		assertEquals(nomberOfRoomInGoodPath, (dungeonGenerator.getPath().size()-2));
 	}
 	
 	@Test
-	public void dungeonHasPathToExit(){
+	public void testDungeonHasPathToExit(){
 		assertTrue(dungeonGenerator.hasPath());
 	}
 	
 	@Test
-	public void emptyDungeonHasNoPathToExit(){
+	public void testEmptyDungeonHasNoPathToExit(){
 		Dungeon dungeon = new Dungeon(new Player(10, new WoodenSword()));
 		dungeonGenerator = new DungeonGenerator(10, dungeon);
 		dungeonGenerator.generateMainPath();

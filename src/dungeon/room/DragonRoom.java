@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dungeon.command.CommandManager;
-import dungeon.entity.BabyDragon;
 import dungeon.entity.Dragon;
 import dungeon.entity.Player;
 
@@ -28,7 +27,7 @@ public class DragonRoom extends Room {
 	@Override
 	public void onPlayerEnter(Player player) {
 		if(visited == false){
-			dragon = new BabyDragon();
+			dragon = new Dragon("Baby Dragon", 2, 1);
 			System.out.println("You are in a dragon room. The fight begins...");
 			premierTour = true;
 		} else {

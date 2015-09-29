@@ -13,6 +13,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import dungeon.Dungeon;
+import dungeon.Game;
 import dungeon.direction.Path;
 import dungeon.direction.PathManager;
 import dungeon.entity.Player;
@@ -35,28 +36,35 @@ public class DungeonTest {
 	}
 	
 	@Test
-	public void dungeonIsCreated(){
+	public void testCreateGame(){
+		Game game = new Game(3);
+		assertTrue(game != null);
+		assertTrue(game instanceof Game);
+	}
+	
+	@Test
+	public void testDungeonIsCreated(){
 		assertNotNull(dungeon);
 		assertTrue(dungeon instanceof Dungeon);
 	}
 	
 	@Test
-	public void initialRoomIsSimpleRoom(){
+	public void testInitialRoomIsSimpleRoom(){
 		assertTrue(dungeon.getCurrentRoom() instanceof SimpleRoom);
 	}
 	
 	@Test
-	public void gameNotFinishedAtBeginning(){
+	public void testGameNotFinishedAtBeginning(){
 		assertFalse(dungeon.gameIsFinished());
 	}
 	
 	@Test
-	public void displayIsCorrect(){	
+	public void testDisplayIsCorrect(){	
 		assertEquals("You are in a simple room.\nPlayer : you have 1 hp.\nWhat do you want to do ?\n> ",dungeon.getInformations());
 	}
 	
 	@Test
-	public void roomIsNotSameWhenMovementIsValid(){
+	public void testRoomIsNotSameWhenMovementIsValid(){
 		Room room = dungeon.getCurrentRoom();
 		dungeon.getCurrentRoom().addRoom(PathManager.north, new SimpleRoom());
 		dungeon.interpreteCommand("go north");
@@ -64,7 +72,7 @@ public class DungeonTest {
 	}
 	
 	@Test
-	public void roomExpectedIsCorrectWhenMovementIsValid(){
+	public void testRoomExpectedIsCorrectWhenMovementIsValid(){
 		dungeon.getCurrentRoom().addRoom(PathManager.north, new SimpleRoom());
 		Room room = dungeon.getCurrentRoom().getRoom("north");
 		dungeon.interpreteCommand("go north");
@@ -72,7 +80,7 @@ public class DungeonTest {
 	}
 	
 	@Test
-	public void commandIsTooSmall(){
+	public void testCommandIsTooSmall(){
 		Room room = dungeon.getCurrentRoom();
 		dungeon.getCurrentRoom().addRoom(PathManager.north, new SimpleRoom());
 		dungeon.interpreteCommand("go");
@@ -80,7 +88,7 @@ public class DungeonTest {
 	}
 	
 	@Test
-	public void commandIsNotValid(){
+	public void testCommandIsNotValid(){
 		Room room = dungeon.getCurrentRoom();
 		dungeon.getCurrentRoom().addRoom(PathManager.north, new SimpleRoom());
 		dungeon.interpreteCommand("test test");
@@ -88,7 +96,7 @@ public class DungeonTest {
 	}
 	
 	@Test
-	public void directionIsNotValid(){
+	public void testDirectionIsNotValid(){
 		Room room = dungeon.getCurrentRoom();
 		dungeon.getCurrentRoom().addRoom(PathManager.north, new SimpleRoom());
 		dungeon.interpreteCommand("go test");
@@ -96,21 +104,21 @@ public class DungeonTest {
 	}
 	
 	@Test
-	public void gameWon(){
+	public void testGameWon(){
 		dungeon.getCurrentRoom().addRoom(PathManager.north, new Exit());
 		dungeon.interpreteCommand("go north");
 		assertTrue(dungeon.gameIsWon());
 	}
 	
 	@Test
-	public void gameLost(){
+	public void testGameLost(){
 		dungeon.getCurrentRoom().addRoom(PathManager.north, new Trap());
 		dungeon.interpreteCommand("go north");
 		assertTrue(dungeon.gameIsLost());
 	}
 	
 	@Test
-	public void RoomIsReplaced(){
+	public void testRoomIsReplaced(){
 		dungeon.getCurrentRoom().addRoom(PathManager.north, new SimpleRoom());
 		Room room = dungeon.getCurrentRoom().getRoom("north");
 		assertTrue(room instanceof SimpleRoom);
@@ -120,7 +128,7 @@ public class DungeonTest {
 	}
 	
 	@Test
-	public void adjacentRoomIsCleared(){
+	public void testAdjacentRoomIsCleared(){
 		dungeon.getCurrentRoom().addRoom(PathManager.north, new SimpleRoom());
 		assertEquals(1,dungeon.getCurrentRoom().getNumberOfAdjacentRooms());
 		dungeon.getCurrentRoom().clearAdjacentRooms();
@@ -128,7 +136,7 @@ public class DungeonTest {
 	}
 	
 	@Test
-	public void getAllDirections(){
+	public void testGetAllDirections(){
 		List<Path> tmp = PathManager.getAllPaths();
 		List<Path> direction = new ArrayList<Path>();
 		
@@ -140,7 +148,7 @@ public class DungeonTest {
 	}
 	
 	@Test
-	public void unknownDirectionOppositeIsBack(){
+	public void testUnknownDirectionOppositeIsBack(){
 		assertEquals(PathManager.back,PathManager.getOppositePath(new Path("")));
 		assertEquals(PathManager.back, PathManager.getOppositePath(new Path("jhehfuh")));
 		assertEquals(null, PathManager.getOppositePath(null));

@@ -10,7 +10,6 @@ import dungeon.command.AttackCommand;
 import dungeon.command.HelpCommand;
 import dungeon.command.PickCommand;
 import dungeon.command.UseCommand;
-import dungeon.entity.BabyDragon;
 import dungeon.entity.Dragon;
 import dungeon.entity.Player;
 import dungeon.item.Potion;
@@ -27,66 +26,66 @@ public class PlayerTest {
 	}
 	
 	@Test
-	public void playerIsCreated(){
+	public void testPlayerIsCreated(){
 		assertTrue(player instanceof Player);
 	}
 	
 	@Test
-	public void playerHasWoodenSword(){
+	public void testPlayerHasWoodenSword(){
 		assertTrue(player.getWeapon() instanceof WoodenSword);
 	}
 	
 	@Test
-	public void playerHasLifeAtBeginning(){
+	public void testPlayerHasLifeAtBeginning(){
 		assertTrue(player.getLife() > 0);
 	}
 	
 	@Test
-	public void playerGetDamage(){
+	public void testPlayerGetDamage(){
 		int lifeTmp = player.getLife();
 		player.takeDamage(1);
 		assertTrue(player.getLife() < lifeTmp);
 	}
 	
 	@Test
-	public void putObjectInInventory(){
+	public void testPutObjectInInventory(){
 		WoodenSword sword = new WoodenSword();
 		player.addItem(sword);
 		assertTrue(player.getItem(0) instanceof WoodenSword);
 	}
 	
 	@Test
-	public void playerIsDead(){
+	public void testPlayerIsDead(){
 		player.takeDamage(player.getLife());
 		assertTrue(player.isDead());
 		assertEquals(player.getLife(), 0);
 	}
 	
 	@Test
-	public void playerIsNotDead(){
+	public void testPlayerIsNotDead(){
 		assertFalse(player.isDead());
 		assertTrue(player.getLife() > 0);
 	}
 	
 	@Test
-	public void setWeapon(){
+	public void testSetWeapon(){
 		player.setWeapon(new WoodenBow());
 		assertTrue(player.getWeapon() instanceof WoodenBow);
 	}
 
 	@Test
-	public void getArme(){
+	public void testGetArme(){
 		assertEquals("Wooden Sword", player.getWeapon().getName());
 	}
 	
 	@Test
-	public void getDamage(){
+	public void testGetDamage(){
 		assertEquals(1, player.getWeapon().getDamage());
 	}
 	
 	@Test
 	public void testAttack(){
-		Dragon dragon = new BabyDragon();
+		Dragon dragon = new Dragon("Baby Dragon", 2, 1);
 		int lifeDragon = dragon .getLife();
 		player.attack(dragon, player.getWeapon().getDamage());
 		assertTrue(dragon.getLife() < lifeDragon);

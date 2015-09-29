@@ -1,6 +1,6 @@
 package dungeon.entity;
 
-public abstract class Dragon extends Entity {
+public class Dragon extends Entity {
 	private int degats;
 	private String name;
 
