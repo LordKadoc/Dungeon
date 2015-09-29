@@ -80,7 +80,6 @@ public class DragonRoom extends Room {
 
 	@Override
 	public void onTurn(Player player) {
-		// TODO Auto-generated method stub
 		if(visited == false){
 			if(premierTour == false){
 				System.out.println("The dragon attacks you !");

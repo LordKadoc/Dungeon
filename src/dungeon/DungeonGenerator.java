@@ -35,7 +35,7 @@ public class DungeonGenerator {
 	
 	/**
 	 * Generates the main path of the dungeon, a succession of rooms connected one by one.
-	 * The main path is always visible and only goes to the 4 cardinal points north, south, west and east.
+	 * The main path is always visible and only goes to the 4 cardinal points North, South, West and East.
 	 */
 	public void generateMainPath(){
 		
@@ -78,13 +78,17 @@ public class DungeonGenerator {
 				}while(current.getAllRoomDirections().contains(direction));
 				current.addRoom(direction, tmp);
 				nb++;
-				ArrayList<Room> rooms=generateVoisin(tmp,nb);
+				ArrayList<Room> rooms=generateNeighbors(tmp,nb);
 				while(!rooms.isEmpty()){
 					nb++;
 					ArrayList<Room> roomsCurrent=new ArrayList<Room>();
+					for(int i=rooms.size()-1;i>=0;i--){
+						if(rooms.get(i) instanceof Trap)
+							rooms.remove(i);
+					}
 					roomsCurrent.addAll(rooms);
 					for(Room r:roomsCurrent)
-						rooms.addAll(generateVoisin(r,nb));
+						rooms.addAll(generateNeighbors(r,nb));
 					rooms.removeAll(roomsCurrent);
 				}
 				
@@ -92,7 +96,16 @@ public class DungeonGenerator {
 		}
 	}
 	
-	public ArrayList<Room> generateVoisin(Room current,int nb){
+	/**
+	 * Generates a certain amount of adjacent rooms to a room, in random direction, and link them to it.
+	 * 
+	 * @param current the room from which to generate adjacent rooms.
+	 * 
+	 * @param nb the depth of the room, relative to its path.
+	 * 
+	 * @return the list of generated adjacent rooms.
+	 */
+	public ArrayList<Room> generateNeighbors(Room current,int nb){
 		int r=new Random().nextInt(PathManager.getAllPaths().size()-2);
 		Room room;
 		Path direction;
@@ -112,7 +125,9 @@ public class DungeonGenerator {
 	
 	/**
 	 * Returns an instance of a room chosen from a list of different types.
-	 * @param nb 
+	 * The random room can be null, which allows the secondary path generation algorithm to have an end.
+	 * 
+	 * @param nb the depth of the room you want to generate relative to the beginning of its path.
 	 * 
 	 * @return a random type of room, from the following :
 	 * 	- simple room
@@ -172,8 +187,6 @@ public class DungeonGenerator {
 		}
 		return stackRoom;
 	}
-	
-	// ******** GETTERS AND SETTERS *******
 	
 	/**
 	 * 
