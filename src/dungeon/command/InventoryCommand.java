@@ -12,11 +12,16 @@ public class InventoryCommand extends Command {
 
 	@Override
 	public void act(String params) {
-		System.out.println("Player inventory : ");
+		System.out.println("\nPlayer inventory : ");
 		Player player = dungeon.getPlayer();
+		if(player.getInventory().isEmpty()){
+			System.out.println(" - nothing\n");
+			return;
+		}
 		for(Item i : player.getInventory()){
 			System.out.println(" - " + i);
 		}
+		System.out.println();
 	}
 
 	@Override

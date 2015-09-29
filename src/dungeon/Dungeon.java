@@ -6,6 +6,7 @@ import dungeon.command.CommandManager;
 import dungeon.entity.Player;
 import dungeon.room.DragonRoom;
 import dungeon.room.Exit;
+import dungeon.room.HiddenExit;
 import dungeon.room.Room;
 import dungeon.room.SimpleRoom;
 
@@ -138,7 +139,7 @@ public class Dungeon {
 	 * @return true if the player is standing on an exit
 	 */
 	public boolean gameIsWon(){
-		return currentRoom instanceof Exit;
+		return currentRoom instanceof Exit || currentRoom instanceof HiddenExit && ((HiddenExit)currentRoom).isExited();
 	}
 	
 	/**
