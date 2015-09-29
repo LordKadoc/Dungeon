@@ -19,7 +19,7 @@ public class AttackCommand extends Command {
 		System.out.println("You attack the dragon");
 		dungeon.getPlayer().attack(((DragonRoom) dungeon.getCurrentRoom()).getDragon(), dungeon.getPlayer().getWeapon().getDamage());
 		if(((DragonRoom) dungeon.getCurrentRoom()).getDragon().isDead()){
-			System.out.println("The dragon is dead");
+			System.out.println("The " + ((DragonRoom) dungeon.getCurrentRoom()).getDragon().getName() + " is dead");
 			((DragonRoom) dungeon.getCurrentRoom()).setVisited(true);
 		}
 	}

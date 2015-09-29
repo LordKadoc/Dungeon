@@ -27,8 +27,15 @@ public class DragonRoom extends Room {
 	@Override
 	public void onPlayerEnter(Player player) {
 		if(visited == false){
-			dragon = new Dragon("Baby Dragon", 2, 1);
-			System.out.println("You are in a dragon room. The fight begins...");
+			int random = (int)(Math.random()*100);
+			if(random > 90){
+				dragon = new Dragon("Legendary Dragon", 5, 2);
+			} else if (random > 70){
+				dragon = new Dragon("Dragon", 3, 1);
+			} else {
+				dragon = new Dragon("Baby Dragon", 2, 1);
+			}
+			System.out.println("You are in a dragon room. The fight begins vs " + dragon.getName() + "...");
 			premierTour = true;
 		} else {
 			System.out.println("You have already kill the dragon");
@@ -81,7 +88,7 @@ public class DragonRoom extends Room {
 	public void onTurn(Player player) {
 		if(visited == false){
 			if(premierTour == false){
-				System.out.println("The dragon attacks you !");
+				System.out.println("The " + dragon.getName()+ " attacks you !");
 				dragon.attack(player, dragon.getDegats());
 			} else {
 				premierTour = false;
