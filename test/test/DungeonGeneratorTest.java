@@ -9,7 +9,7 @@ import dungeon.Dungeon;
 import dungeon.DungeonGenerator;
 import dungeon.direction.PathManager;
 import dungeon.entity.Player;
-import dungeon.item.WoodenSword;
+import dungeon.item.Weapon;
 import dungeon.room.SimpleRoom;
 
 public class DungeonGeneratorTest {
@@ -20,7 +20,7 @@ public class DungeonGeneratorTest {
 	
 	@Before
 	public void createDungeonGenerator(){
-		dungeonGenerator = new DungeonGenerator(nomberOfRoomInGoodPath, new Dungeon(new Player(10, new WoodenSword())));
+		dungeonGenerator = new DungeonGenerator(nomberOfRoomInGoodPath, new Dungeon(new Player(10, new Weapon("Wooden Sword", 1))));
 		dungeonGenerator.generateMainPath();
 	}
 	
@@ -42,7 +42,7 @@ public class DungeonGeneratorTest {
 	
 	@Test
 	public void testEmptyDungeonHasNoPathToExit(){
-		Dungeon dungeon = new Dungeon(new Player(10, new WoodenSword()));
+		Dungeon dungeon = new Dungeon(new Player(10, new Weapon("Wooden Sword", 1)));
 		dungeonGenerator = new DungeonGenerator(10, dungeon);
 		dungeonGenerator.generateMainPath();
 		dungeon.getCurrentRoom().clearAdjacentRooms();

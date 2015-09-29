@@ -1,6 +1,8 @@
 package test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -14,15 +16,13 @@ import dungeon.entity.Dragon;
 import dungeon.entity.Player;
 import dungeon.item.Potion;
 import dungeon.item.Weapon;
-import dungeon.item.WoodenBow;
-import dungeon.item.WoodenSword;
 
 public class PlayerTest {
 	Player player;
 
 	@Before
 	public void playerInit(){
-		player = new Player(10, new WoodenSword());
+		player = new Player(10, new Weapon("Wooden Sword", 1));
 	}
 	
 	@Test
@@ -32,7 +32,7 @@ public class PlayerTest {
 	
 	@Test
 	public void testPlayerHasWoodenSword(){
-		assertTrue(player.getWeapon() instanceof WoodenSword);
+		assertEquals("Wooden Sword", player.getWeapon().getName());
 	}
 	
 	@Test
@@ -49,9 +49,9 @@ public class PlayerTest {
 	
 	@Test
 	public void testPutObjectInInventory(){
-		WoodenSword sword = new WoodenSword();
+		Weapon sword = new Weapon("Wooden Sword", 1);
 		player.addItem(sword);
-		assertTrue(player.getItem(0) instanceof WoodenSword);
+		assertTrue(player.getItem(0) instanceof Weapon);
 	}
 	
 	@Test
@@ -69,8 +69,8 @@ public class PlayerTest {
 	
 	@Test
 	public void testSetWeapon(){
-		player.setWeapon(new WoodenBow());
-		assertTrue(player.getWeapon() instanceof WoodenBow);
+		player.setWeapon(new Weapon("Wooden Bow", 2));
+		assertEquals("Wooden Bow", player.getWeapon().getName());
 	}
 
 	@Test
@@ -93,9 +93,9 @@ public class PlayerTest {
 	
 	@Test
 	public void testUseWeapon(){
-		Weapon woodenBow = new WoodenBow();
+		Weapon woodenBow = new Weapon("Wooden Bow", 2);
 		woodenBow.use(player);
-		assertEquals(player.getWeapon(), woodenBow);
+		assertEquals(player.getWeapon().getName(), "Wooden Bow");
 	}
 	
 	@Test

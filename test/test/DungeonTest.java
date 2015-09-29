@@ -17,12 +17,11 @@ import dungeon.Game;
 import dungeon.direction.Path;
 import dungeon.direction.PathManager;
 import dungeon.entity.Player;
-import dungeon.item.WoodenSword;
+import dungeon.item.Weapon;
 import dungeon.room.Exit;
 import dungeon.room.Room;
 import dungeon.room.SimpleRoom;
 import dungeon.room.Trap;
-import dungeon.room.TreasureRoom;
 
 
 public class DungeonTest {
@@ -31,7 +30,7 @@ public class DungeonTest {
 	
 	@Before
 	public void createDungeon(){
-		dungeon = new Dungeon(new Player(1, new WoodenSword()));
+		dungeon = new Dungeon(new Player(1, new Weapon("Wooden Sword", 1)));
 		dungeon.getCommandManager().setAvailableCommands(dungeon.getCurrentRoom().getAvailableCommands());
 	}
 	

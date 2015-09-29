@@ -7,7 +7,7 @@ import dungeon.command.CommandManager;
 import dungeon.entity.Player;
 import dungeon.item.Item;
 import dungeon.item.Potion;
-import dungeon.item.WoodenBow;
+import dungeon.item.Weapon;
 
 public class TreasureRoom extends Room {
 	
@@ -37,7 +37,11 @@ public class TreasureRoom extends Room {
 		System.out.println("You enter a treasure room !");
 		if(item == null && !looted){
 			if((int)(Math.random()*100) > 50){
-				item = new WoodenBow();
+				if((int)(Math.random()*100) > 25){
+					item = new Weapon("Wooden Bow", 2);
+				} else {
+					item = new Weapon("Flame Sword", 4);
+				}
 			}else{
 				item = new Potion();
 			}

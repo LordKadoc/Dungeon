@@ -15,7 +15,7 @@ import dungeon.direction.Path;
 import dungeon.direction.PathManager;
 import dungeon.entity.Player;
 import dungeon.item.Item;
-import dungeon.item.WoodenSword;
+import dungeon.item.Weapon;
 import dungeon.room.DragonRoom;
 import dungeon.room.Exit;
 import dungeon.room.Room;
@@ -146,14 +146,14 @@ public class RoomTest {
 	@Test
 	public void testOnPlayerEnterDragonRoom(){
 		room = new DragonRoom();
-		room.onPlayerEnter(new Player(10, new WoodenSword()));
+		room.onPlayerEnter(new Player(10, new Weapon("Wooden Sword", 1)));
 		assertTrue(((DragonRoom) room).getDragon() != null);
 	}
 	
 	@Test
 	public void testOnTurn(){
 		room = new DragonRoom();
-		Player player = new Player(10, new WoodenSword());
+		Player player = new Player(10, new Weapon("Wooden Sword", 1));
 		room.onPlayerEnter(player);
 		int life = player.getLife();
 		room.onTurn(player);
@@ -164,7 +164,7 @@ public class RoomTest {
 	@Test
 	public void testCommandsOnDragonRoom(){
 		room = new DragonRoom();
-		room.onPlayerEnter(new Player(10, new WoodenSword()));
+		room.onPlayerEnter(new Player(10, new Weapon("Wooden Sword", 1)));
 		List<String> commandsOfDragonRoom = new ArrayList<String>();
 		commandsOfDragonRoom = room.getAvailableCommands();
 		List<String> commands = new ArrayList<String>();
@@ -237,14 +237,14 @@ public class RoomTest {
 	@Test
 	public void testTreasureRoomHaveItem(){
 		room = new TreasureRoom();
-		room.onPlayerEnter(new Player(10, new WoodenSword()));
+		room.onPlayerEnter(new Player(10, new Weapon("Wooden Sword", 1)));
 		assertTrue(((TreasureRoom) room).getItem() != null);
 	}
 	
 	@Test
 	public void testGetExtendsDescriptionOfTreasureRoom(){
 		room = new TreasureRoom();
-		room.onPlayerEnter(new Player(10, new WoodenSword()));
+		room.onPlayerEnter(new Player(10, new Weapon("Wooden Sword", 1)));
 		Item i = ((TreasureRoom) room).getItem();
 		String s = "You are in a treasure room. Many explorers already looted it, and it's almost empty now ... There are still a few items on the ground though ...\n - a " + i.toString() + " on the ground, just in front of you.";
 		assertEquals(s , room.getExtendedDescription());

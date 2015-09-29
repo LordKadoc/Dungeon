@@ -1,7 +1,7 @@
 package dungeon;
 
 import dungeon.entity.Player;
-import dungeon.item.WoodenSword;
+import dungeon.item.Weapon;
 
 public class Game {
 	
@@ -18,7 +18,7 @@ public class Game {
 	 */
 	public Game(int maxLevel){
 		this.maxLevel = maxLevel;
-		this.player = new Player(10, new WoodenSword());
+		this.player = new Player(10, new Weapon("Wooden Sword", 1));
 		this.currentLevel = 1;
 	}
 	
