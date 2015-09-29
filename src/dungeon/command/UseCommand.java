@@ -20,8 +20,11 @@ public class UseCommand extends Command {
 		Player player = dungeon.getPlayer();
 		
 		Item i = player.getItem(params);
+		Item iNow = player.getWeapon();
 		if(i != null){
 			i.use(player);
+			player.removeItem(i);
+			player.addItem(iNow);			
 		}
 		
 	}
