@@ -12,6 +12,11 @@ public class DragonRoom extends Room {
 	private Dragon dragon;
 	private boolean visited = false;
 	private boolean premierTour;
+	private int currentLvl;
+	
+	public DragonRoom(int currentLvl) {
+		this.currentLvl = currentLvl;
+	}
 	
 	@Override
 	public String toString(){
@@ -27,10 +32,9 @@ public class DragonRoom extends Room {
 	@Override
 	public void onPlayerEnter(Player player) {
 		if(visited == false){
-			int random = (int)(Math.random()*100);
-			if(random > 90){
+			if(currentLvl == 3){
 				dragon = new Dragon("Legendary Dragon", 5, 2);
-			} else if (random > 70){
+			} else if (currentLvl == 2){
 				dragon = new Dragon("Dragon", 3, 1);
 			} else {
 				dragon = new Dragon("Baby Dragon", 2, 1);

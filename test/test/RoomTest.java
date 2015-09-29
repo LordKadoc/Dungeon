@@ -102,7 +102,7 @@ public class RoomTest {
 		assertEquals("a trap", room.toString());
 		room = new TreasureRoom();
 		assertEquals("a treasure room", room.toString());
-		room = new DragonRoom();
+		room = new DragonRoom(1);
 		assertEquals("a dragon room", room.toString());
 	}
 	
@@ -131,13 +131,13 @@ public class RoomTest {
 	
 	@Test
 	public void testDragonRoomExtendedDescriptionCorrect(){
-		room = new DragonRoom();
+		room = new DragonRoom(1);
 		assertEquals("You are in a small room, with scorch marks all over the walls ... It seems like you entered a dragon's nest !!", room.getExtendedDescription());
 	}
 	
 	@Test
 	public void testDragonRoomVisited(){
-		room = new DragonRoom();
+		room = new DragonRoom(1);
 		assertFalse(((DragonRoom) room).isVisited());
 		((DragonRoom) room).setVisited(true);
 		assertTrue(((DragonRoom) room).isVisited());
@@ -145,14 +145,14 @@ public class RoomTest {
 	
 	@Test
 	public void testOnPlayerEnterDragonRoom(){
-		room = new DragonRoom();
+		room = new DragonRoom(1);
 		room.onPlayerEnter(new Player(10, new Weapon("Wooden Sword", 1)));
 		assertTrue(((DragonRoom) room).getDragon() != null);
 	}
 	
 	@Test
 	public void testOnTurn(){
-		room = new DragonRoom();
+		room = new DragonRoom(1);
 		Player player = new Player(10, new Weapon("Wooden Sword", 1));
 		room.onPlayerEnter(player);
 		int life = player.getLife();
@@ -163,7 +163,7 @@ public class RoomTest {
 	
 	@Test
 	public void testCommandsOnDragonRoom(){
-		room = new DragonRoom();
+		room = new DragonRoom(1);
 		room.onPlayerEnter(new Player(10, new Weapon("Wooden Sword", 1)));
 		List<String> commandsOfDragonRoom = new ArrayList<String>();
 		commandsOfDragonRoom = room.getAvailableCommands();

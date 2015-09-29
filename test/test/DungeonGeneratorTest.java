@@ -20,7 +20,7 @@ public class DungeonGeneratorTest {
 	
 	@Before
 	public void createDungeonGenerator(){
-		dungeonGenerator = new DungeonGenerator(nomberOfRoomInGoodPath, new Dungeon(new Player(10, new Weapon("Wooden Sword", 1))));
+		dungeonGenerator = new DungeonGenerator(nomberOfRoomInGoodPath, new Dungeon(new Player(10, new Weapon("Wooden Sword", 1))), 1);
 		dungeonGenerator.generateMainPath();
 	}
 	
@@ -43,7 +43,7 @@ public class DungeonGeneratorTest {
 	@Test
 	public void testEmptyDungeonHasNoPathToExit(){
 		Dungeon dungeon = new Dungeon(new Player(10, new Weapon("Wooden Sword", 1)));
-		dungeonGenerator = new DungeonGenerator(10, dungeon);
+		dungeonGenerator = new DungeonGenerator(10, dungeon, 1);
 		dungeonGenerator.generateMainPath();
 		dungeon.getCurrentRoom().clearAdjacentRooms();
 		assertFalse(dungeonGenerator.hasPath());

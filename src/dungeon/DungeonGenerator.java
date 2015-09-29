@@ -20,6 +20,8 @@ public class DungeonGenerator {
 	private int nbRoomsBeginToEnd;
 	
 	private Dungeon dungeon;
+	
+	private int currentLvl;
 
 	
 	/**
@@ -29,9 +31,10 @@ public class DungeonGenerator {
 	 *
 	 * @param dungeon the dungeon to generate.
 	 */
-	public DungeonGenerator(int nbRoomsBeginToEnd, Dungeon dungeon){
+	public DungeonGenerator(int nbRoomsBeginToEnd, Dungeon dungeon, int currentLvl){
 		this.nbRoomsBeginToEnd = nbRoomsBeginToEnd;
 		this.dungeon = dungeon;
+		this.currentLvl = currentLvl;
 	}
 	
 	/**
@@ -48,7 +51,7 @@ public class DungeonGenerator {
 			do{
 				direction = PathManager.getRandomPath(PathManager.getCardinalPaths());
 			}while(direction.equals(currentRoom.getParentDirection()));
-			tmp = (int)(Math.random() * 100) > 75 ? new DragonRoom() : new SimpleRoom();
+			tmp = (int)(Math.random() * 100) > 75 ? new DragonRoom(currentLvl) : new SimpleRoom();
 			currentRoom.addRoom(direction, tmp);
 			currentRoom = tmp;
 		}
@@ -149,7 +152,7 @@ public class DungeonGenerator {
 		else if(random > 60)
 			return new Trap();
 		else if(random > 40)
-			return new DragonRoom();
+			return new DragonRoom(currentLvl);
 		return new TreasureRoom();
 	}
 	
