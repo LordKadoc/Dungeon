@@ -28,7 +28,7 @@ public class Weapon extends Item{
 
 	@Override
 	public void use(Player player) {
-		System.out.println("You equip a " + this);
+		System.out.println("You equip a " + this + " (" + damage + " damage)");
 		player.setWeapon(this);		
 	}
 

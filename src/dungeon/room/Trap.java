@@ -17,7 +17,6 @@ public class Trap extends Room {
 
 	@Override
 	public String getExtendedDescription() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

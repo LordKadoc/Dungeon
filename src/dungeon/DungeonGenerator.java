@@ -9,6 +9,7 @@ import dungeon.direction.Path;
 import dungeon.direction.PathManager;
 import dungeon.room.DragonRoom;
 import dungeon.room.Exit;
+import dungeon.room.HiddenExit;
 import dungeon.room.Room;
 import dungeon.room.SimpleRoom;
 import dungeon.room.Trap;
@@ -47,7 +48,7 @@ public class DungeonGenerator {
 			do{
 				direction = PathManager.getRandomPath(PathManager.getCardinalPaths());
 			}while(direction.equals(currentRoom.getParentDirection()));
-			tmp = new SimpleRoom();
+			tmp = (int)(Math.random() * 100) > 75 ? new DragonRoom() : new SimpleRoom();
 			currentRoom.addRoom(direction, tmp);
 			currentRoom = tmp;
 		}
@@ -134,19 +135,21 @@ public class DungeonGenerator {
 	 * 	- trap room
 	 * 	- dragon room
 	 * 	- treasure room
+	 * 	- none
 	 */
 	public Room getRandomRoomType(int nb){
 		int random = (int)(Math.random()*100);
 		if(random < nb*20){
 			return null;
 		}
-		if(random > 75){
+		if(random > 90)
+			return new HiddenExit();
+		else if(random > 80)
 			return new SimpleRoom();
-		}else if(random > 55){
+		else if(random > 60)
 			return new Trap();
-		}else if(random > 25){
+		else if(random > 40)
 			return new DragonRoom();
-		}
 		return new TreasureRoom();
 	}
 	
