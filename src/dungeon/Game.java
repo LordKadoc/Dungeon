@@ -54,7 +54,9 @@ public class Game {
 	 */
 	private void createDungeon() {
 		dungeon = new Dungeon(player);
-		new DungeonGenerator(5+currentLevel*2, dungeon).generateMainPath();;
+		DungeonGenerator generator = new DungeonGenerator(5+currentLevel*2,dungeon);
+		generator.generateMainPath();
+		generator.generateSecondaryPath();
 	}
 
 	/**

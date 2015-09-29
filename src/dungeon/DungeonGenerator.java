@@ -2,6 +2,7 @@ package dungeon;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Stack;
 
 import dungeon.direction.Path;
@@ -18,6 +19,7 @@ public class DungeonGenerator {
 	private int nbRoomsBeginToEnd;
 	
 	private Dungeon dungeon;
+
 	
 	/**
 	 * Creates a new generator for the dungeon.
@@ -37,8 +39,6 @@ public class DungeonGenerator {
 	 */
 	public void generateMainPath(){
 		
-		//System.out.println("Generate Main Path ...");
-		
 		Path direction;
 		Room currentRoom = dungeon.getCurrentRoom();
 		Room tmp;
@@ -48,17 +48,13 @@ public class DungeonGenerator {
 				direction = PathManager.getRandomPath(PathManager.getCardinalPaths());
 			}while(direction.equals(currentRoom.getParentDirection()));
 			tmp = new SimpleRoom();
-			//System.out.println("Add a room to direction : " + direction);
 			currentRoom.addRoom(direction, tmp);
 			currentRoom = tmp;
 		}
 		do{
 			direction = PathManager.getRandomPath(PathManager.getCardinalPaths());
 		}while(direction.equals(currentRoom.getParentDirection()));
-		//System.out.println("Add exit to direction : " + direction);
 		currentRoom.addRoom(direction, new Exit());
-		
-		generateSecondaryPath();
 		
 	}
 	
@@ -68,28 +64,55 @@ public class DungeonGenerator {
 	 */
 	public void generateSecondaryPath(){
 		
-		//System.out.println("Generate Second Path ...");
-		
 		Stack<Room> path = getPath();
 		Room current,tmp;
 		Path direction;
-		
+		int nb;
 		while(!path.isEmpty()){
+			nb=0;
 			current = path.pop();
-			tmp = getRandomRoomType();
+			tmp = getRandomRoomType(nb);
 			if(tmp != null){
 				do{
 					direction = PathManager.getRandomPath(PathManager.getAllPaths());
 				}while(current.getAllRoomDirections().contains(direction));
-			//	System.out.println(current.getDefaultDescription());
-			//	System.out.println("Add a room to direction : " + direction);
 				current.addRoom(direction, tmp);
+				nb++;
+				ArrayList<Room> rooms=generateVoisin(tmp,nb);
+				while(!rooms.isEmpty()){
+					nb++;
+					ArrayList<Room> roomsCurrent=new ArrayList<Room>();
+					roomsCurrent.addAll(rooms);
+					for(Room r:roomsCurrent)
+						rooms.addAll(generateVoisin(r,nb));
+					rooms.removeAll(roomsCurrent);
+				}
+				
 			}
 		}
 	}
 	
+	public ArrayList<Room> generateVoisin(Room current,int nb){
+		int r=new Random().nextInt(PathManager.getAllPaths().size()-2);
+		Room room;
+		Path direction;
+		ArrayList<Room> rooms= new ArrayList<Room>();
+		for(int i=0;i<r;i++){
+			room= getRandomRoomType(nb);
+			if(room != null){
+				do{
+					direction = PathManager.getRandomPath(PathManager.getAllPaths());
+				}while(current.getAllRoomDirections().contains(direction));
+				current.addRoom(direction, room);
+				rooms.add(room);
+			}
+		}
+		return rooms;
+	}
+	
 	/**
 	 * Returns an instance of a room chosen from a list of different types.
+	 * @param nb 
 	 * 
 	 * @return a random type of room, from the following :
 	 * 	- simple room
@@ -97,8 +120,11 @@ public class DungeonGenerator {
 	 * 	- dragon room
 	 * 	- treasure room
 	 */
-	public Room getRandomRoomType(){
+	public Room getRandomRoomType(int nb){
 		int random = (int)(Math.random()*100);
+		if(random < nb*20){
+			return null;
+		}
 		if(random > 75){
 			return new SimpleRoom();
 		}else if(random > 55){

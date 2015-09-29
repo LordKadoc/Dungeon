@@ -26,7 +26,7 @@ public class AttackCommand extends Command {
 
 	@Override
 	public String description() {
-		return "attack : attack the dragon in dragon's room";
+		return "attack : Attacks the dragon in dragon's room.";
 	}
 
 }

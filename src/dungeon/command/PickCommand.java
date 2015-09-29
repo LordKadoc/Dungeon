@@ -20,10 +20,7 @@ public class PickCommand extends Command {
 		
 		
 		TreasureRoom room = (TreasureRoom) dungeon.getCurrentRoom();
-		Item item = room.getItem();
-		
-		System.out.println(params);
-		
+		Item item = room.getItem();	
 		
 		if(params.equals(item.toString())){
 			dungeon.getPlayer().addItem(item);

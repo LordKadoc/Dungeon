@@ -28,7 +28,7 @@ public class UseCommand extends Command {
 
 	@Override
 	public String description() {
-		return "use : use an item or equip a weapon";
+		return "use : Use an item or equip a weapon.";
 	}
 
 }

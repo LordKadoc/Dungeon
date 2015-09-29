@@ -43,6 +43,7 @@ public class DragonRoom extends Room {
 		commands.add(CommandManager.search);
 		commands.add(CommandManager.attack);
 		commands.add(CommandManager.use);
+		commands.add(CommandManager.inventory);
 		if(dragon.isDead()){
 			commands.add(CommandManager.go);
 		}else{

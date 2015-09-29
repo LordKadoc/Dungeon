@@ -33,6 +33,7 @@ public class Trap extends Room {
 		commands.add(CommandManager.go);
 		commands.add(CommandManager.use);
 		commands.add(CommandManager.help);
+		commands.add(CommandManager.inventory);
 		return commands;
 	}
 

@@ -52,6 +52,7 @@ public class TreasureRoom extends Room {
 		commands.add(CommandManager.search);
 		commands.add(CommandManager.go);
 		commands.add(CommandManager.use);
+		commands.add(CommandManager.inventory);
 		if(!looted){
 			commands.add(CommandManager.pick);	
 		}

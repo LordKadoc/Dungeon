@@ -15,6 +15,7 @@ public class Potion extends Item{
 
 	@Override
 	public void use(Player player) {
+		System.out.println("You drink the health potion : you get " + heal + " hp back !" );
 		player.takeDamage(-1*heal);
 		player.removeItem(this);
 	}

@@ -76,6 +76,10 @@ public class Player extends Entity {
 		return null;
 	}
 	
+	public List<Item> getInventory(){
+		return inventory;
+	}
+	
 	/**
 	 * Returns the weapon currently equipped by the player, null if there is none.
 	 * 

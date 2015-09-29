@@ -124,7 +124,7 @@ public class PlayerTest {
 	@Test
 	public void testAttackCommandDescription(){
 		AttackCommand command = new AttackCommand(new Dungeon(player));
-		assertEquals("attack : attack the dragon in dragon's room", command.description());
+		assertEquals("attack : Attacks the dragon in dragon's room.", command.description());
 	}
 	
 	@Test
@@ -136,7 +136,7 @@ public class PlayerTest {
 	@Test
 	public void testUseCommandDescription(){
 		UseCommand command = new UseCommand(new Dungeon(player));
-		assertEquals("use : use an item or equip a weapon", command.description());
+		assertEquals("use : Use an item or equip a weapon.", command.description());
 	}
 	
 	@Test

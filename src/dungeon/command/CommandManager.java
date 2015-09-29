@@ -22,6 +22,8 @@ public class CommandManager {
 	
 	public final static String use = new String("use");
 	
+	public final static String inventory = new String("inventory");
+	
 	private Map<String,Command> allCommands;
 	
 	private Map<String,Command> availableCommands;
@@ -52,6 +54,7 @@ public class CommandManager {
 		allCommands.put(attack, new AttackCommand(dungeon));
 		//allCommands.put("equip",null);
 		allCommands.put(use,new UseCommand(dungeon));
+		allCommands.put(inventory,new InventoryCommand(dungeon));
 	}
 	
 	/**
