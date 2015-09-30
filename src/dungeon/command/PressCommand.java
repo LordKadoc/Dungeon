@@ -11,6 +11,12 @@ public class PressCommand extends Command {
 
 	@Override
 	public void act(String params) {
+		
+		if(params == null){
+			System.out.println("Press what ?");
+			return;
+		}
+		
 		HiddenExit exit = (HiddenExit) dungeon.getCurrentRoom();
 		if(params.equals(exit.getMechanism())){
 			exit.exit();
@@ -22,7 +28,7 @@ public class PressCommand extends Command {
 
 	@Override
 	public String description() {
-		return "press : Triggers the hidden mechanism";
+		return "press : Triggers the hidden mechanism.";
 	}
 
 }

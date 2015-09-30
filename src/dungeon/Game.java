@@ -47,6 +47,8 @@ public class Game {
 			
 		}
 		
+		System.out.println("You finally escaped the Dragon's cave !");
+		
 	}
 
 	/**

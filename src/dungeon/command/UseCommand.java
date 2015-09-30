@@ -17,14 +17,18 @@ public class UseCommand extends Command {
 
 	@Override
 	public void act(String params) {
+		
+		if(params == null){
+			System.out.println("Use what ?");
+			return;
+		}
+		
 		Player player = dungeon.getPlayer();
 		
 		Item i = player.getItem(params);
-		Item iNow = player.getWeapon();
 		if(i != null){
 			i.use(player);
 			player.removeItem(i);
-			player.addItem(iNow);			
 		}
 		
 	}

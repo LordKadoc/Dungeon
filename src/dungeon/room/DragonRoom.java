@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dungeon.command.CommandManager;
+import dungeon.direction.Path;
 import dungeon.entity.Dragon;
 import dungeon.entity.Player;
 
@@ -25,7 +26,10 @@ public class DragonRoom extends Room {
 
 	@Override
 	public String getExtendedDescription() {
-		String s = "You are in a small room, with scorch marks all over the walls ... It seems like you entered a dragon's nest !!";
+		String s = "You are in a small room, with scorch marks all over the walls ... It seems like you entered a dragon's nest !!";	
+		for(Path p : hiddenRooms.keySet()){
+			s+="\n"+"You found a room " + p + " !";
+		}
 		return s;
 	}
 

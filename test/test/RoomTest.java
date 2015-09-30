@@ -126,7 +126,7 @@ public class RoomTest {
 	@Test
 	public void testTrapExtendedDescriptionCorrect(){
 		room = new Trap();
-		assertEquals(null, room.getExtendedDescription());
+		assertEquals("It's a trap ! And you stepped on it ! Ahah", room.getExtendedDescription());
 	}
 	
 	@Test

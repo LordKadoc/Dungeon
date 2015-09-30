@@ -18,6 +18,11 @@ public class PickCommand extends Command {
 	@Override
 	public void act(String params) {
 		
+		if(params == null){
+			System.out.println("Pick what ?");
+			return;
+		}
+		
 		
 		TreasureRoom room = (TreasureRoom) dungeon.getCurrentRoom();
 		Item item = room.getItem();	

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dungeon.command.CommandManager;
+import dungeon.direction.Path;
 import dungeon.entity.Player;
 import dungeon.item.Item;
 import dungeon.item.Potion;
@@ -27,6 +28,9 @@ public class TreasureRoom extends Room {
 			s+=" - nothing useful";
 		}else{
 			s+=" - a " + item.toString() + " on the ground, just in front of you.";
+		}
+		for(Path p : hiddenRooms.keySet()){
+			s+="\n"+"You found a room " + p + " !";
 		}
 		
 		return s;

@@ -24,9 +24,9 @@ public abstract class Command {
 	
 	/**
 	 * 
-	 * @return the description of the command when the help command is entered by the user, consisting of :
-	 * 	- the use of the command, usually : command <optional parameters>
-	 * 	- the description of the command, a small text explaining its purpose.
+	 * @return the description of the command when the help command is entered by the user, consisting of : </br>
+	 * 	- the use of the command, usually : command <optional parameters> </br>
+	 * 	- the description of the command, a small text explaining its purpose. </br>
 	 */
 	public abstract String description();
 	
@@ -49,9 +49,9 @@ public abstract class Command {
 	}
 	
 	/**
-	 * Returns the parameters of a command, so everything but the first word
+	 * Returns the parameters of a command, so everything but the first word.
 	 * 
-	 * @param command the text from which you want to extract the parameters
+	 * @param command the text from which you want to extract the parameters.
 	 * 
 	 * @return the parameters contained in the command, null if there are none.
 	 */
