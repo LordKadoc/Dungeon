@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import dungeon.IRoom;
 import dungeon.direction.Path;
 import dungeon.direction.PathManager;
 

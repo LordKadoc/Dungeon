@@ -10,6 +10,17 @@ import dungeon.room.HiddenExit;
 import dungeon.room.Room;
 import dungeon.room.SimpleRoom;
 
+/**
+ * 
+ * 
+ * A dungeon is a series of rooms connected to each other. There is a beginning and an end, and always a path between them. </br>
+ * There are different types of rooms in the dungeon, including treasure rooms, monster rooms, traps, ...
+ * 
+ * The dungeon contains a player who starts in the beginning room.
+ * 
+ * @author Lucas Moura de Oliveira
+ *
+ */
 public class Dungeon {
 	
 	private final Scanner scanner = new Scanner(System.in);
@@ -55,10 +66,10 @@ public class Dungeon {
 	}
 	
 	/**
-	 * Returns the status of the game, consisting of :
-	 * 	- the informations of the room in which the player is
-	 * 	- a small text to ask the player what does he want to do
-	 * 	- a prompt symbol
+	 * Returns the status of the game, consisting of : </br>
+	 *  - the informations of the room in which the player is </br>
+	 *  - a small text to ask the player what does he want to do </br>
+	 * 	- a prompt symbol </br>
 	 * 
 	 * @return the players informations for the current turn
 	 */

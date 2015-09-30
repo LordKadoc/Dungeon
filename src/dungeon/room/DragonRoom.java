@@ -46,7 +46,7 @@ public class DragonRoom extends Room {
 			System.out.println("You are in a dragon room. The fight begins vs " + dragon.getName() + "...");
 			premierTour = true;
 		} else {
-			System.out.println("You have already kill the dragon");
+			System.out.println("You have already killed the dragon");
 		}
 	}
 	

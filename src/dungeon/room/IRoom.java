@@ -1,4 +1,4 @@
-package dungeon;
+package dungeon.room;
 
 import java.util.List;
 
