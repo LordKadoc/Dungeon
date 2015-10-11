@@ -15,6 +15,14 @@ import dungeon.room.SimpleRoom;
 import dungeon.room.Trap;
 import dungeon.room.TreasureRoom;
 
+/**
+ * 
+ * A dungeon generator creates a path through a dungeon, connecting its entrance to one or multiple exits.
+ * The generator starts from the entrance and adds room in random directions to create a main path, and then add secondary path of variable length along the main path.
+ * 
+ * @author lucasmouradeoliveira
+ *
+ */
 public class DungeonGenerator {
 	
 	private int nbRoomsBeginToEnd;
@@ -30,6 +38,9 @@ public class DungeonGenerator {
 	 * @param nbRoomsBeginToEnd the number of room between the beginning and the end of the dungeon.
 	 *
 	 * @param dungeon the dungeon to generate.
+	 * 
+	 * @param currentLvl the current level of the dungeon.
+	 * 
 	 */
 	public DungeonGenerator(int nbRoomsBeginToEnd, Dungeon dungeon, int currentLvl){
 		this.nbRoomsBeginToEnd = nbRoomsBeginToEnd;

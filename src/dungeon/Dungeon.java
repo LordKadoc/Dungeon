@@ -13,7 +13,7 @@ import dungeon.room.SimpleRoom;
 /**
  * 
  * 
- * A dungeon is a series of rooms connected to each other. There is a beginning and an end, and always a path between them. </br>
+ * A dungeon is a series of rooms connected to each other. There is a beginning and an end, and always a path between them. <br>
  * There are different types of rooms in the dungeon, including treasure rooms, monster rooms, traps, ...
  * 
  * The dungeon contains a player who starts in the beginning room.
@@ -66,10 +66,10 @@ public class Dungeon {
 	}
 	
 	/**
-	 * Returns the status of the game, consisting of : </br>
-	 *  - the informations of the room in which the player is </br>
-	 *  - a small text to ask the player what does he want to do </br>
-	 * 	- a prompt symbol </br>
+	 * Returns the status of the game, consisting of : <br>
+	 *  - the informations of the room in which the player is <br>
+	 *  - a small text to ask the player what does he want to do <br>
+	 * 	- a prompt symbol <br>
 	 * 
 	 * @return the players informations for the current turn
 	 */
@@ -120,7 +120,8 @@ public class Dungeon {
 	
 	/**
 	 * Makes the player enter a new room, sets his last visited room, and resolves the action happening when he enters the new room.
-	 * @param room
+	 * 
+	 * @param room the new room the player is about to enter.
 	 */
 	public void enterNewRoom(Room room){
 		player.setLastVisitedRoom(currentRoom);

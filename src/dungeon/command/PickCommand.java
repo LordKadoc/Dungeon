@@ -4,10 +4,16 @@ import dungeon.Dungeon;
 import dungeon.item.Item;
 import dungeon.room.TreasureRoom;
 
+/**
+ * The PickCommand class resolves the actions happening when the user types the "pick" command.
+ * 
+ * @author lucasmouradeoliveira
+ *
+ */
 public class PickCommand extends Command {
 
 	/**
-	 * PickCommand resolves the actions happening when the user types the "pick" command.
+	 * Creates a new item-picking command.
 	 * 
 	 * @param dungeon the current dungeon level.
 	 */

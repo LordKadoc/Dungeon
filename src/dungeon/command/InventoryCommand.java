@@ -4,8 +4,19 @@ import dungeon.Dungeon;
 import dungeon.entity.Player;
 import dungeon.item.Item;
 
+/**
+ * The InventoryCommand class resolves the actions happening when the user types the "inventory" command.
+ * 
+ * @author lucasmouradeoliveira
+ *
+ */
 public class InventoryCommand extends Command {
 
+	/**
+	 * Creates a new inventory displaying command.
+	 * 
+	 * @param dungeon the current dungeon level.
+	 */
 	public InventoryCommand(Dungeon dungeon) {
 		super(dungeon);
 	}

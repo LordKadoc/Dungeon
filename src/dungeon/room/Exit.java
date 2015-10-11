@@ -31,7 +31,6 @@ public class Exit extends Room {
 	@Override
 	public void onTurn(Player player) {
 		// TODO Auto-generated method stub
-		
 	}
 
 }

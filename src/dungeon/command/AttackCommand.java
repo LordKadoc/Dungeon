@@ -3,10 +3,17 @@ package dungeon.command;
 import dungeon.Dungeon;
 import dungeon.room.DragonRoom;
 
+/**
+ * 
+ *  The AttackCommand class resolves the actions happening when the user types the "attack" command.
+ * 
+ * @author lucasmouradeoliveira
+ *
+ */
 public class AttackCommand extends Command {
 
 	/**
-	 * AttackCommand resolves the actions happening when the user types the "attack" command.
+	 * Creates a new attack command.
 	 * 
 	 * @param dungeon the current dungeon level.
 	 */

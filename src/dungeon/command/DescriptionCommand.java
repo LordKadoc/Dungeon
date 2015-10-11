@@ -2,10 +2,17 @@ package dungeon.command;
 
 import dungeon.Dungeon;
 
+/**
+ * 
+ * The DescriptionCommand class resolves the actions happening when the user types the "describe" command.
+ * 
+ * @author lucasmouradeoliveira
+ *
+ */
 public class DescriptionCommand extends Command {
 
 	/**
-	 * DescriptionCommand resolves the actions happening when the user types the "describe" command.
+	 * Creates a new description command
 	 * 
 	 * @param dungeon the current dungeon level.
 	 */

@@ -104,7 +104,7 @@ public class Player extends Entity {
 	}
 	
 	/**
-	 * Returns the last room the player before the one he is currently visiting.
+	 * Returns the last room in which the player was before the one he is currently visiting.
 	 * 
 	 * @return the last room visited by the player.
 	 */

@@ -3,8 +3,19 @@ package dungeon.command;
 import dungeon.Dungeon;
 import dungeon.room.HiddenExit;
 
+/**
+ * The PresCommand class resolves the actions happening when the user types the "press" command.
+ * 
+ * @author lucasmouradeoliveira
+ *
+ */
 public class PressCommand extends Command {
 
+	/**
+	 * Creates a new button-pressing command
+	 * 
+	 * @param dungeon the current dungeon level.
+	 */
 	public PressCommand(Dungeon dungeon) {
 		super(dungeon);
 	}

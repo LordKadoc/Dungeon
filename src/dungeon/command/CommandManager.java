@@ -6,6 +6,14 @@ import java.util.Map;
 
 import dungeon.Dungeon;
 
+/**
+ * 
+ * The CommandManager class defines the list of all the different commands available in the game, as well as those available in the current room of the dungeon.
+ * All the commands currently added to the game are defined as static strings in order to be accessible anywhere in the program.
+ * 
+ * @author lucasmouradeoliveira
+ *
+ */
 public class CommandManager {
 	
 	public final static String search = new String("search");

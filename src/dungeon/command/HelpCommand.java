@@ -2,10 +2,16 @@ package dungeon.command;
 
 import dungeon.Dungeon;
 
+/**
+ * The HelpCommand class resolves the actions happening when the user types the "help" command.
+ * 
+ * @author lucasmouradeoliveira
+ *
+ */
 public class HelpCommand extends Command {
 
 	/**
-	 * HelpCommand resolves the actions happening when the user types the "help" command.
+	 * Creates a new help command.
 	 * 
 	 * @param dungeon the current dungeon level.
 	 */

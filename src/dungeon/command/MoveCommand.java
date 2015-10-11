@@ -3,10 +3,16 @@ package dungeon.command;
 import dungeon.Dungeon;
 import dungeon.room.Room;
 
+/**
+ * The MoveCommand class resolves the actions happening when the user types the "move" command.
+ * 
+ * @author lucasmouradeoliveira
+ *
+ */
 public class MoveCommand extends Command {
 
 	/**
-	 * MoveCommand resolves the actions happening when the user types the "go" command.
+	 * Creates a new movement command.
 	 * 
 	 * @param dungeon the current dungeon level.
 	 */

@@ -2,6 +2,14 @@ package dungeon.command;
 
 import dungeon.Dungeon;
 
+/**
+ * 
+ * The Command class allows the program to resolve the different actions of the player.
+ * Whenever a command is entered by the user, a corresponding Command object should be created to resolve the action(s) happening.
+ * 
+ * @author lucasmouradeoliveira
+ *
+ */
 public abstract class Command {
 	
 	protected Dungeon dungeon;
@@ -23,10 +31,11 @@ public abstract class Command {
 	public abstract void act(String params);
 	
 	/**
+	 * Returns the description of the command.
 	 * 
-	 * @return the description of the command when the help command is entered by the user, consisting of : </br>
-	 * 	- the use of the command, usually : command <optional parameters> </br>
-	 * 	- the description of the command, a small text explaining its purpose. </br>
+	 * @return the description of the command when the help command is entered by the user, consisting of : <br>
+	 * 	- the use of the command, usually : command &lt;optional parameters&gt; <br>
+	 * 	- the description of the command, a small text explaining its purpose. <br>
 	 */
 	public abstract String description();
 	

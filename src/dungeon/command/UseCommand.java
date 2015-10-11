@@ -4,10 +4,16 @@ import dungeon.Dungeon;
 import dungeon.entity.Player;
 import dungeon.item.Item;
 
+/**
+ * The UseCommand class resolves the actions happening when the user types the "use" command.
+ * 
+ * @author lucasmouradeoliveira
+ *
+ */
 public class UseCommand extends Command {
 
 	/**
-	 * UseCommand resolves the actions happening when the user types the "use" command.
+	 * Creates a new command which handles the use of items in the player's inventory.
 	 * 
 	 * @param dungeon the current dungeon level.
 	 */

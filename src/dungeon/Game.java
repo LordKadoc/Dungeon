@@ -3,6 +3,15 @@ package dungeon;
 import dungeon.entity.Player;
 import dungeon.item.Weapon;
 
+/**
+ * 
+ * The Game class contains the main function of the program. It creates a new dungeon on 3 successive levels, as well as a player.
+ * The dungeon is generated every time the players completes it, until he reaches the end of the game.
+ * 
+ * 
+ * @author lucasmouradeoliveira
+ *
+ */
 public class Game {
 	
 	private Dungeon dungeon;
@@ -63,7 +72,7 @@ public class Game {
 
 	/**
 	 * Creates and launches a new game, with 3 consecutive dungeons
-	 * @param args
+	 * @param args the main function list of parameters (unused)
 	 */
 	public static void main(String[] args){
 		new Game(3).playGame();
