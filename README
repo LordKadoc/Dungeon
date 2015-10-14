@@ -1,1 +1,41 @@
-#Dungeon
+Dungeon - Projet COO - Licence 3
+
+========== Auteurs ===========================
+
+Lucas MOURA DE OLIVEIRA - Groupe 3
+Rémy HANQUEZ - Groupe 3
+
+Dépot git : https://github.com/LordKadoc/Dungeon.git
+
+========== Déroulement de la partie ==========
+
+Une partie de jeu se déroule sur 3 niveaux. A chaque niveau, la longueur du donjon augmente, et les monstres rencontrés sont plus puissants.
+Le but du jeu est de traverser les 3 niveaux successifs tout en restant en vie.
+
+ - Au premier niveau, le joueur affronte des bébés dragons (2 points de vie, 1 dégat).
+ - Au deuxième niveau des dragons adultes (3 points de vie, 1 dégat).
+ - Au troisième niveau des dragons légendaires (5 points de vie, 2 dégats).
+ 
+Le joueur commence la partie avec 10 points de vie et une épée en bois. Il peut augmenter sa vie et peut dépasser 10 s'il trouve des potions sur le chemin.
+Le joueur peut également trouver de meilleurs armes dans le donjon.
+
+========== Salles du donjon ==================
+
+Les salles suivantes sont actuellement présentes dans le donjon : 
+	- Salle normale : rien de spécial dans cette salle, mais il peut y avoir des salles cachées reliées à cette salle.
+	- Salle de monstre (Dragon Room) : un dragon, dont la puissance dépends du niveau en cours. Le dragon empêche le joueur de traverser la salle, et l'attaque à chaque tour.
+		Le joueur peut choisir de combattre le dragon, ou bien de fuir et de rebrousser chemin. Une fois le monstre tué, le joueur peut traverser la salle et y retourner sans danger.
+	- Salle trésor : Un objet aléatoire est posé sur le sol, le joueur peut le récupérer et l'utiliser.
+	- Sortie de niveau (visible) : transporte le joueur jusqu'au niveau suivant. Si le joueur a atteint le dernier niveau, il gagne la partie quand il atteint cette pièce. 
+		Il y a toujours au moins une sortie visible par niveau.
+	- Sortie de niveau (cachée) : apparait comme une salle normale pour le joueur, mais révèle un dispositif secret lorsqu'elle est fouillée. Si le joueur active le dispositif, il découvre la sortie.
+	- Salle de piège : Inflige 1 point de dégat au joueur quand il entre dans la salle. Une fois qu'un piège est activé, il n'inflige plus de dégats si le joueur rentre de nouveau dans la salle.
+	
+========== Génération du donjon ==============
+
+A chaque fois que le joueur atteint un nouveau niveau, le donjon est re-généré. Un chemin principal, de longueur variable, est tracé. Ce chemin conduit forcément sur une sortie visible.
+De plus, toutes les salles contenues dans ce chemin sont visibles par le joueur sans qu'il ai besoin de fouiller la salle. 
+Il n'y a que des salles simples, des salles de monstre et une sortie visible sur le chemin principal.
+
+Une fois le chemin principal tracé, des chemins secondaires sont rajoutés. Chaque pièce du chemin principal a une chance de créer un chemin secondaire, de longueur également variable.
+Le chemin secondaire contient des pièces de tout type, hormis des sorties visibles.
