@@ -7,6 +7,14 @@ Rémy HANQUEZ - Groupe 3
 
 Dépot git : https://github.com/LordKadoc/Dungeon.git
 
+========== Lancement du programme ============
+
+Classe principale : bin/dungeon/Game
+
+Lancement du jeu : java -cp bin dungeon/Game (à la racine du projet)
+
+Compilation : javac -cp src -d bin src/dungeon/Game.java (à la racine du projet)
+
 ========== Déroulement de la partie ==========
 
 Une partie de jeu se déroule sur 3 niveaux. A chaque niveau, la longueur du donjon augmente, et les monstres rencontrés sont plus puissants.
